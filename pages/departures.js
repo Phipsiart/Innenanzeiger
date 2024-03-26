@@ -54,10 +54,12 @@ export default function Home({ Destination, Line, closestStopIndex, stopovers, n
 </div>
 <div className="bg-[#d3d3d3] mt-[15rem] h-[52.5rem]  text-[#2c4958]">
 <div className="flex ml-[5.1rem] ">
-<div className="block ml-24 mt-1">
+<div className="block ml-18 mt-1">
   <p className="text-[1.3rem] text-center ">Plan</p>
   <p className="mt-1 text-[3.5rem] font-bold ">{
-    lastStop['plannedDeparture']
+  (lastStop && typeof lastStop.plannedArrival === 'string')
+  ? lastStop.plannedArrival.slice(11, 16)
+  : "06:99"
 }
 </p>
 </div>
@@ -77,7 +79,7 @@ export default function Home({ Destination, Line, closestStopIndex, stopovers, n
 </div>
 <div className="block fixed right-5 mt-1">
   <p className="text-[1.3rem] text-left ">Gleis</p>
-  <p className="mt-1 text-[3.5rem] font-bold ">{lastStop.departurePlatform}</p>
+  <p className="mt-1 text-[3.5rem] font-bold ">{lastStop.arrivalPlatform}</p>
 </div>
 </div>
 <div className="flex justify-center mt-20 text-4xl">
