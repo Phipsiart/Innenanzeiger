@@ -11,9 +11,8 @@ This project is an emulation of various displays from railway companies in Germa
  - Shows next stop, delays and current state of the train at the station
 
 ## To Do
-[ ] add live tracking to see the position of the train on a map
-
-[ ] translate the UI to English
+ - [ ] add live tracking to show the train on a map
+ - [ ] translate the UI to english
 ## Getting Started
 
 First, run the development server:
