@@ -19,9 +19,6 @@
 .gray-bg-card-spacer {
   margin-top: 5.5rem;
 }
-body {
-  overflow: hidden; /* Hide scrollbars */
-}
 video {
   position: absolute;
   top: 0;
