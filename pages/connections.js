@@ -63,7 +63,8 @@ export default function Connections({data}){
 export async function getServerSideProps(context) {
     const from = context.query.from;
     const to = context.query.to;
- const data = await GetConnetions(from, to);
+    const when = context.query.departure;
+ const data = await GetConnetions(from, to, when);
  return {
     props: {
       data

@@ -7,8 +7,7 @@ useEffect(() => {
       const now = new Date();
       const hours = now.getHours().toString().padStart(2, "0");
       const minutes = now.getMinutes().toString().padStart(2, "0");
-      const separator = blink ? ":" : " ";
-      setTime(`${hours}${separator}${minutes}`);
+      setTime(`${hours}:${minutes}`);
       setBlink(!blink);
     }, 1000);
     return () => clearInterval(interval);

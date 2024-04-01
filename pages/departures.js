@@ -1,6 +1,6 @@
 import  {  useEffect } from "react";
 import Head from "next/head";
-import CountdownDisplay from "../components/CountdownDisplay";
+import CountdownDisplay from "../components/BOB/CountdownDisplay";
 import { useRouter } from "next/router";
 import { Innenanzeiger } from "../lib/departures/Innenanzeiger";
 import BOBLines from "../components/BOB/BOBLines";
@@ -26,7 +26,7 @@ export default function Home({ data }) {
     closestStopName = closestStop.name;
   }
   const ByeByeMessage = (
-    <p className="text-center fixed text-[#2c4958] top-[30rem] text-4xl">Dieser Zug endet dort. Wir bedanken uns für Ihre Reise und hoffen sie bald wieder an Board begrüßen zu dürfen.</p>
+    <p className="text-center fixed text-[#2c4958] top-[30rem] text-4xl ml-10 mr-10">Dieser Zug endet dort. Wir bedanken uns für Ihre Reise und hoffen sie bald wieder an Bord begrüßen zu dürfen.</p>
 
   )
   return (
@@ -39,7 +39,7 @@ export default function Home({ data }) {
           className="fixed top-0 h-12 z-[9999] bg-[#004e94] w-full"
         >
        <BOBClock />
-          <span className="fixed end-36  text-[2rem]  text-white">
+          <span className="fixed end-48  text-[2rem]  text-white">
  {data.currentDate}
        </span>
 
