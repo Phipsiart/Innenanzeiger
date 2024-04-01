@@ -14,9 +14,39 @@ This project is an emulation of various displays from railway companies in Germa
  - [ ] add live tracking to show the train on a map
  - [ ] translate the UI to english
 ## Getting Started
+This project is made with  [Next.js](https://nextjs.org/docs) and [Tailwind CSS](https://tailwindcss.com/)
 
-First, run the development server:
+## Requirements
+ - [Node.js](https://nodejs.org)
+ - a package manager like yarn or npm
+ - [db-rest](https://github.com/derhuerst/db-rest)
+## Installation
 
+Let's first install all dependencies for the frontend
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+## Setting up the API
+The project works with the great [db-rest](https://github.com/derhuerst/db-rest) API to retrieve data for current departures and trains.
+A public instance is available at ```v6.db.transport.rest```
+
+Create an .env file by copying the old one 
+
+
+```bash
+cp .env.example .env
+```
+Set the API_INSTANCE variable to a host name on which db-rest is running, e.g. v6.db.transport.rest
+```bash
+API_INSTANCE=v6.db.transport.rest # or any other name
+```
+## Run the development server
 ```bash
 npm run dev
 # or
@@ -26,3 +56,7 @@ pnpm dev
 # or
 bun dev
 ```
+
+## Contributing
+
+Contributions of any kind are more than welcome. Feel free to report problems or make a pull request.
