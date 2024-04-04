@@ -1,20 +1,12 @@
-import  {  useEffect } from "react";
-import Head from "next/head";
-import CountdownDisplay from "../components/BOB/CountdownDisplay";
-import { useRouter } from "next/router";
-import { Innenanzeiger } from "../lib/departures/Innenanzeiger";
-import BOBLines from "../components/BOB/BOBLines";
-import BOBClock from "../components/BOB/BOBClock";
-export default function Home({ data }) {
-  const router = useRouter();
-  useEffect(() => {
-    const refreshInterval = setInterval(() => {
-      router.replace(router.asPath);
-    }, 15000); 
-    return () => clearInterval(refreshInterval); 
-  }, [router]);
-  //define all vars.
+import CountdownDisplay from "../../components/BOB/CountdownDisplay"
+import { Innenanzeiger } from "../../lib/departures/Innenanzeiger";
+import BOBLines from "../../components/BOB/BOBLines";
+import BOBClock from "../../components/BOB/BOBClock";
+import RefreshData from "../../components/core/RefreshData";
+export  default async function Home({ params, searchParams }) {
+  const data = await Innenanzeiger(searchParams.tripId)
   const Line = data.line;
+  const tripId= searchParams.tripId;
   const Destination = data.Destination;
   const nextStopStatus = data.nextStopStatus;
   const stopovers = data.stopovers;
@@ -31,10 +23,7 @@ export default function Home({ data }) {
   )
   return (
     <>
-      <Head>
-        <title>Innenanzeiger</title>
-      </Head>
-      <main>
+    <RefreshData />
       <div
           className="fixed top-0 h-12 z-[9999] bg-[#004e94] w-full"
         >
@@ -111,17 +100,6 @@ export default function Home({ data }) {
   </div>
 
   {data.closestStopIndex === -1 ? ByeByeMessage : null}
-      </main>
     </>
   );
-}
-export async function getServerSideProps(context) {
-  const tripId = context.query.tripId;
-  const data = await Innenanzeiger(tripId)
-
-  return {
-    props: {
-      data
-    },
-  };
 }

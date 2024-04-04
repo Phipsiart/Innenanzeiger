@@ -1,39 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.bottom-bar-color {
-  background-color: #0096de;
-}
-.lineconfig {
-  border-color: #feca06;
-  color: #feca06;
-}
-
-.border-bottom-bar {
-  border-width: 5.5px;
-}
-.gray-bg-card {
-  background-color: #ebeaee;
-  padding-top: 1.8rem;
-}
-.gray-bg-card-spacer {
-  margin-top: 5.5rem;
-}
-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100% !important;
-  min-height: 100% !important;
-  z-index:-100;
-  aspect-ratio: 16/9;
-}
-.nextstopanimation{
-  color: none;
-  animation: nextstopanimation 2s ease-in forwards infinite;
-}
-@keyframes nextstopanimation {
-  to{
-    color: #004e94;
-  }
-}

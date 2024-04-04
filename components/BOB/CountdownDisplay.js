@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 import ReplaceNames from '../../lib/filter/ReplaceNames';
 const CountdownDisplay = ({ destination, nextStop }) => {
