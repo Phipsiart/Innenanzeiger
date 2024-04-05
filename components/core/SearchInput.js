@@ -14,29 +14,21 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-function Redirect() {
-    const router = useRouter()
+ export  function SearchInput(){
+  const router = useRouter();
+  function Redirect(){
     const from = document.getElementById("from").value || "München Hbf"
     const to = document.getElementById("to").value || "Berlin Hbf"
     console.log(from + to + date)
     router.push(`/connections?from=${from}&to=${to}&departure=${date}`)
-}
-
-const [date, setDate] = React.useState(new Date().toISOString());
-
-React.useEffect(() => {
-    const interval = setInterval(() => {
-        setDate(new Date().toISOString());
-    }, 1000);
-    return () => clearInterval(interval);
-}, []);
-
-const [time, setTime] = React.useState(() => {
+  }
+  const [date, setDate] = React.useState(new Date().toISOString());
+  const [time, setTime] = React.useState(() => {
     const date = new Date();
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
-});
+  });
     console.log(date)
   return (
     <div className="flex justify-center mt-12 flex-wrap ">
