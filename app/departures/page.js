@@ -82,7 +82,7 @@ export  default async function Home({ params, searchParams }) {
       }
       </p>
     </div>
-    <div className="ml-[7.6rem] mt-3.5">
+    <div className="ml-[8rem] mt-3.5">
       <p className={`text-${stopover.arrivalDelay > 300 ? 'red-500' : 'green-600'} text-[2.6rem]`}>
         {index === -1
           ? stopover.arrival
