@@ -55,7 +55,7 @@ export  default async function Home({ params, searchParams }) {
   {data.closestStopIndex === -1 ? data.stopovers[data.totalstops - 1].arrival : closestStop.departure}
   </p>
 </div>
-<div className="ml-20 mt-1">
+<div className="ml-[4.4rem] mt-1">
   <p className="text-[1.3rem] text-left ">{data.closestStopIndex === -1 ? 'Endstation' : nextStopStatus[data.closestStopIndex]}</p>
   <p className="mt-1 text-[3.5rem] font-bold ">{closestStopName}</p>
 </div>
