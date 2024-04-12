@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.delay{
+    color: rgb(239 68 68);
+}
+.ontime{
+    color: rgb(22 163 74);
+}

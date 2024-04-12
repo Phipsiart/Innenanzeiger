@@ -55,7 +55,7 @@ export  default async function Home({ params, searchParams }) {
 <BOBLines numLines={data.stopsleft} />
 <div className="ml-[5.2rem] mt-1">
   <p className="text-[1.3rem] text-center ">Aktuell</p>
-  <p className={`text-${closestStop['arrivalDelay'] > 300 ? 'red-500' : 'green-600'} mt-1 text-[3.5rem] font-bold text-green-600`}>
+  <p className={`${closestStop['arrivalDelay'] > 300 ? 'delay' : 'ontime'} mt-1 text-[3.5rem] font-bold text-green-600`}>
   {data.closestStopIndex === -1 ? data.stopovers[data.totalstops - 1].arrival : closestStop.departure}
   </p>
 </div>
@@ -87,7 +87,7 @@ export  default async function Home({ params, searchParams }) {
       </p>
     </div>
     <div className="ml-[8rem] mt-3.5">
-      <p className={`text-${stopover.arrivalDelay > 300 ? 'red-500' : 'green-600'} text-[2.6rem]`}>
+      <p className={`${stopover.arrivalDelay > 300 ? 'delay' : 'ontime'} text-[2.6rem]`}>
         {index === -1
           ? stopover.arrival
           : (stopover && typeof stopover === 'string')
