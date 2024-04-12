@@ -34,11 +34,15 @@ export  default async function Home({ params, searchParams }) {
 
           <span className="fixed top-0 start-3 text-white text-[2rem]">{data.Line}</span>
         </div>
+  {/**Background-wrapper start */}
+  <div className="bg-[#d3d3d3] fixed top-[15rem] left-0 right-0 w-full bottom-0 z-[-200]"></div>
+  {/**Background-wrapper End */}
+
   {/**Departures Board Start */}
   <div className="fixed top-12 bg-white w-full h-[12rem] z-50">
     <CountdownDisplay destination={Destination} nextStop={closestStop} />
   </div>
-  <div className="bg-[#d3d3d3] mt-[15rem] h-[52.5rem]">
+  <div className="mt-[15rem]">
     <div className="flex text-[#2c4958]">
     <div className="ml-20 mt-1">
   <p className="text-[1.3rem] text-center ">Plan</p>
