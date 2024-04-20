@@ -39,11 +39,12 @@ export default async function SBahnInnenanzeiger({params, searchParams}){
     const tripId= searchParams.tripId;  
     return(
         <>
+        <div className="__screen overflow-hidden">
         <RefreshData />
         <BackgroundWrapper />
         <NextStationBar linecolor={themeconfig} closestStopIndex={data.closestStopIndex} nextStop={data.stopovers[data.closestStopIndex]} nextStopStatus={data.nextStopStatus[data.closestStopIndex]} />
     <div className="mb-[10rem]"></div>
-    <div className="animate-scroll" style={{display: "unset"}}>
+    <div className="animate-scroll">
     {data.closestStopIndex !== -1 && nextStops.map((stopover, index) => (
   <div key={index} className="flex text-[2.5rem] ">
       {/*fix the vertical line for the */}
@@ -89,6 +90,7 @@ export default async function SBahnInnenanzeiger({params, searchParams}){
 </div>
 
      <BottomBar linecolor={themeconfig} line={data.Line} destination={data.Destination} />
+        </div>
         </>
     )
 }
