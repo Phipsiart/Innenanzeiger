@@ -7,3 +7,17 @@
 .ontime{
     color: rgb(22 163 74);
 }
+@keyframes scroll {
+    0%, 20% { transform: translateY(0); opacity: 1; }
+    25%, 45% { transform: translateY(-12rem); opacity: 1; }
+    50%, 70% { transform: translateY(-24rem); opacity: 1; }
+    75%, 95% { transform: translateY(-48rem); opacity: 1; }
+    100% { transform: translateY(-48rem); opacity: 0; }
+  }
+  
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+  body{
+    overflow-y: hidden;
+  }

@@ -61,7 +61,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
     const router = useRouter();
 
     const RedirectToInnenanzeiger = (tripId: any) => {
-      router.push(`/departures?tripId=${tripId}`);
+      router.push(tripId);
     };
 
     return (

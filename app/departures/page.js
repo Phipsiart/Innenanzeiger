@@ -3,6 +3,7 @@ import { Innenanzeiger } from "../../lib/departures/Innenanzeiger";
 import BOBLines from "../../components/BOB/BOBLines";
 import BOBClock from "../../components/BOB/BOBClock";
 import RefreshData from "../../components/core/RefreshData";
+
 export  default async function Home({ params, searchParams }) {
   const data = await Innenanzeiger(searchParams.tripId)
   const Line = data.line;

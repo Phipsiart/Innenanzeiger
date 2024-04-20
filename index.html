@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innenanzeiger</title>
+    <style type="text/css">
+       body{
+        font-family: Arial, Helvetica, sans-serif;
+       }
+       .app{
+        border: none;
+        scroll-behavior: smooth;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s;
+       }
+       .app.visible{
+        opacity: 1;
+       }
+       .wait{
+        opacity: 0;
+       }
+    </style>
+    <script>
+        let currentTripId = '';
+        async function fetchdata(){
+            const mogstankas = await fetch("https://mail.phipsiart.de/_internal/innnenanzeiger/phipsiart.json")
+            const data = await mogstankas.json()
+            if (data.tripId.length >= 0 && data.tripId !== currentTripId) {
+                const iframe = document.querySelector("iframe#app_innenanzeiger");
+                iframe.style.opacity = 0;
+                setTimeout(() => {
+                    iframe.src="https://dfi.phipsiart.de/departures?tripId=" + data.tripId;
+                    iframe.style.opacity = 1;
+                }, 1000);
+                currentTripId = data.tripId;
+            } else if (!data.tripId.startsWith('http')) {
+                console.error('tripId is not a URL:', data.tripId);
+            }
+        }
+        var intervalId = window.setInterval(function(){
+            fetchdata();
+}, 15000);
+    </script>
+</head>
+<body onload="fetchdata()" style="background-color: #000;">
+    <h1 style="position: fixed; bottom: 0; right:0; font-size: 0.8rem; color: grey;"> Warte auf Verbindung...</h1>
+<iframe class="app" id="app_innenanzeiger" src=""></iframe>
+</body>
+</html>

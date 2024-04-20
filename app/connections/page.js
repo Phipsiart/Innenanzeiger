@@ -1,6 +1,5 @@
 import GetConnetions from "../../lib/getconnections"
 import MainHeadline from "../../components/core/Mainheadline"
-import { Redirect } from "next"
 import {
   Table,
   TableBody,
@@ -31,7 +30,7 @@ export default async function Connections({  params, searchParams,}) {
       </TableHeader>
       <TableBody>
         {data.map((connection) => (
-          <TableRow  key={connection.tripId} tripId={connection.tripId}  className={`cursor-pointer ${connection.tripId}`}>
+          <TableRow  key={connection.tripId} tripId={connection.redirectto}  className={`cursor-pointer ${connection.tripId}`}>
             <TableCell className="font-medium">{connection.line}</TableCell>
             <TableCell>{connection.destination}</TableCell>
             <TableCell>{connection.plannedDeparture}</TableCell>
