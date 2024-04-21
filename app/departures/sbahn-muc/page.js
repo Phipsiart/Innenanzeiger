@@ -3,6 +3,7 @@ import RefreshData from "../../../components/core/RefreshData";
 import BottomBar from "@/components/sbahn-muc/BottomBar";
 import BackgroundWrapper from "@/components/sbahn-muc/BackgroundWrapper"
 import NextStationBar from "@/components/sbahn-muc/NextStationBar"
+import ConnectionsDisplay from "@/components/sbahn-muc/ConnectionsDisplay"
 export default async function SBahnInnenanzeiger({params, searchParams}){
     const data = await Innenanzeiger(searchParams.tripId)
     // an easy way to set the colors for the lines accordingly.
@@ -42,9 +43,20 @@ export default async function SBahnInnenanzeiger({params, searchParams}){
         <div className="__screen overflow-hidden">
         <RefreshData />
         <BackgroundWrapper />
-        <NextStationBar linecolor={themeconfig} closestStopIndex={data.closestStopIndex} nextStop={data.stopovers[data.closestStopIndex]} nextStopStatus={data.nextStopStatus[data.closestStopIndex]} />
+        <NextStationBar linecolor={themeconfig} nextStop={data.nextstop} nextStopStatus={data.closestStopStatus} />
+        {data.renderconnections && <ConnectionsDisplay ibnr={data.nextstop.IBNR} time={data.nextstop.arrival}/>}
     <div className="mb-[10rem]"></div>
-    <div className="animate-scroll">
+    {/*if we reached the Final stop, render a goodbye message.*/}
+    {data.closestStopIndex === -1 && (
+      <>
+        <p className="text-center text-[3rem] mt-[23rem]">
+          Dieser Zug endet dort. Bitte alle aussteigen. Wir bedanken uns für Ihre Fahrt.
+        </p>
+        <p className="text-center text-[3rem] pt-[1.5rem] text-gray-500 italic">
+          This service terminates there. Thank you for your journey.
+        </p>
+      </>
+    )}   <div className={data.stopsleft < 6 ? "" : "animate-scroll"}>
     {data.closestStopIndex !== -1 && nextStops.map((stopover, index) => (
   <div key={index} className="flex text-[2.5rem] ">
       {/*fix the vertical line for the */}

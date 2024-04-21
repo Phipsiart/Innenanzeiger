@@ -1,6 +1,6 @@
 export default function NextStationBar({nextStop, nextStopStatus, linecolor}){
-    const status = nextStopStatus
-    const statuseng = nextStopStatus.replace("Nächster Halt", "Next stop").replace("Abfahrt", "Departure").replace("Minuten ", "min.")
+    const status = nextStopStatus.replace("Abgefahren", "Endstation")
+    const statuseng = nextStopStatus.replace("Nächster Halt", "Next stop").replace("Abfahrt", "Departure").replace("Minuten ", "min.").replace("Abgefahren", "Final Stop")
     
     return(
         <>
