@@ -1,16 +1,22 @@
 FROM node:alpine
 
-ENV NODE_ENV=production
+# Set the working directory inside the container
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN apk update && apk upgrade &&  apk add ca-certificates make python3 && update-ca-certificates && apk add --update tzdata
-ENV TZ=Europe/Berlin
-RUN rm -f /sbin/apk && rm -rf /etc/apk && rm -rf /lib/apk && rm -rf /usr/share/apk &&  rm -rf /var/lib/apk
 
-RUN yarn install --frozen-lockfile --production
-COPY . ./
-RUN yarn run next telemetry disable &&  yarn run next build
+# Copy package.json and yarn.lock to the working directory
+COPY package*.json yarn.lock ./
 
+# Install dependencies
+RUN yarn install
+
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Build the Next.js app
+RUN yarn run next build
+
+# Expose the port that the Next.js app will run on
 EXPOSE 3000
 
+# Start the Next.js app
 CMD ["yarn", "start"]
