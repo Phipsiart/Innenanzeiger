@@ -1,7 +1,7 @@
 import ReplaceNames from "@/lib/filter/ReplaceNames"
 import FormatDate from "@/lib/filter/FormatDate"
 export default async function ConnectionsDisplay({ibnr}){
-    const fetchdata = await fetch(`https://transport.phipsiart.de/stops/${ibnr}/departures?results=5&taxi?false&duration=12800`)
+    const fetchdata = await fetch(`https://transport.phipsiart.de/stops/${ibnr}/departures?results=5&taxi=false&duration=12800`)
     const data = await fetchdata.json()
    return(
     <>
