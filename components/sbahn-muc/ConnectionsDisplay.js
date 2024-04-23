@@ -1,7 +1,9 @@
 import ReplaceNames from "@/lib/filter/ReplaceNames"
 import FormatDate from "@/lib/filter/FormatDate"
+import Image from "next/image"
 export default async function ConnectionsDisplay({ibnr}){
-    const fetchdata = await fetch(`https://transport.phipsiart.de/stops/${ibnr}/departures?results=5&taxi?false&duration=12800`)
+    const API_INSTANCE = process.env.API_INSTANCE
+    const fetchdata = await fetch(`https://${API_INSTANCE}/stops/${ibnr}/departures?results=5&taxi?false&duration=12800`)
     const data = await fetchdata.json()
    return(
     <>
@@ -22,8 +24,8 @@ export default async function ConnectionsDisplay({ibnr}){
     {data.departures.map((connection) => (
         <>
         <div className="flex mt-3" key={connection.tripId}>
-        <div className={connection.line.productName}>{connection.line.productName}</div>
-        <span className="text-[2rem] ml-4 mt-2">{connection.line.name.replace("STR", "").replace("BusSEV", "")}</span>
+        <Image class="fixed " src={`/transportation-types/${connection.line.productName}.svg`} height="55" width="55" alt={`${connection.line.productName} Logo (illustarational)`}></Image> 
+        <span className="text-[2rem] ml-[5rem] mt-2">{connection.line.name.replace("STR", "").replace("BusSEV", "").replace("Bus", "")}</span>
        <span className="fixed left-56 text-[2rem] ml-4 mt-2">{ReplaceNames(connection.destination.name)}</span>
        <span className="fixed right-[11.5rem] text-[2rem] ml-4 mt-2">{FormatDate(connection.plannedWhen)}</span>
        <span className="fixed right-[2rem] text-[2rem] ml-4 mt-2">{"+ " + connection.delay /60 + " min"}</span>

@@ -36,7 +36,7 @@ export default async function SBahnInnenanzeiger({params, searchParams}){
       themeconfig ="#f05a74"
     }
     const stopovers = data.stopovers;
-    var nextStops = stopovers.slice(data.closestStopIndex + 1, data.closestStopIndex + 22) || "Bad Leberkas";
+    var nextStops = stopovers.slice(data.closestStopIndex + 1, data.closestStopIndex + 22) || 0;
     const tripId= searchParams.tripId;  
     return(
         <>
@@ -44,7 +44,7 @@ export default async function SBahnInnenanzeiger({params, searchParams}){
         <RefreshData />
         <BackgroundWrapper />
         <NextStationBar linecolor={themeconfig} nextStop={data.nextstop} nextStopStatus={data.closestStopStatus} />
-        {data.renderconnections && <ConnectionsDisplay ibnr={data.nextstop.IBNR} time={data.nextstop.arrival}/>}
+        {data.renderconnections && <ConnectionsDisplay ibnr={data.nextstop.IBNR}/>} 
     <div className="mb-[10rem]"></div>
     {/*if we reached the Final stop, render a goodbye message.*/}
     {data.closestStopIndex === -1 && (

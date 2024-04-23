@@ -23,7 +23,7 @@ export default function BottomBar({ line, destination, linecolor }) {
       <div className="w-full fixed bottom-0 z-[9999] h-[7.5rem] bg-blue-500">
         <Image
           className="mt-5 ml-6"
-          src={`/train-lines/${line}.svg`}
+          src={`/train-lines/sbahn-muc/${line}.svg`}
           alt={`${line} Logo (Ilustrational)`}
           height={180}
           width={180}
