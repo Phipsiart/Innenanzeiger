@@ -15,7 +15,7 @@ export default async function Connections({  params, searchParams,}) {
  console.log(data)  
     return(
         <>
-        <MainHeadline text="Verbindungen" />
+        <MainHeadline text="Connections" />
         <div className="flex justify-center mt-12">
         <div className=" max-w-[40rem]">
         <Table>

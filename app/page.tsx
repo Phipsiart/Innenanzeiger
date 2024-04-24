@@ -5,18 +5,18 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <>
-    <MainHeadline text="Search Connection"  />
+    <MainHeadline text="Welcome."  />
 <SearchInput />
-<div className="flex justify-center mt-12 mr-10 ml-10">
-  <div className="max-w-lg">
-    <p>Welcome to Innenanzeiger. Here you can select a train and then view it using the Interior Display simulation (a screen-like interface as if you were sitting in the same train). Bayerische Oberlandbahn & S-Bahn München similar screens (currently in beta) are currently supported. You can also select trains from other railway companies, but they will probably not be displayed correctly. As this is a simulation, the content here may well differ from the actual representations in the trains.</p>
-    <div className="bg-red-700 p-4 rounded-2xl mt-8">
-    <p className="text-[2rem] text-white">Disclamer</p>
-    <p className="text-white"> This project is an emulation of various displays from railway companies in Germany. All brands and trademarks, including but not limited to Bayerische Regiobahn and S-Bahn München are used solely for the purpose of creating a realistic emulation. They do not indicate any kind of connection, endorsement, or authorization by the respective companies. All rights belong to their respective owners. </p>
-    <p className="text-white">The data on this website is also provided without warranty. Use of this website is at your own risk. We cannot be held liable for any damages. </p>   </div>
-    <p>The project is Open Source. You can find the source Code here:</p><Link href="https://github.com/Phipsiart/Innenanzeiger">Innenzeiger</Link>
-    </div>
-    </div>
+<div className="flex justify-center mt-12">
+<p className="max-w-xs">Welcome to Innenanzeiger. Here you can select a train and then view it using the Interior Display simulation (a screen-like interface as if you were sitting in the same train). Bayerische Oberlandbahn & S-Bahn München similar screens (currently in beta) are currently supported. You can also select trains from other railway companies, but they will probably not be displayed correctly. As this is a simulation, the content here may well differ from the actual representations in the trains.</p>
+</div>  
+
+<div className="fixed bottom-1 right-2 text-[1rem] flex">
+  <Link href="/disclaimer" className="text-red-500 font-bold ">Disclaimer</Link>
+  <Link href="https://github.com/Phipsiart/Innenanzeiger" className="ml-2">Source Code</Link>
+  <p className="ml-2 text-red-500 font-bold">All data without warranty.</p>
+</div>
+
     </>
   );
 }
