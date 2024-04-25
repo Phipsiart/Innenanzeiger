@@ -21,13 +21,14 @@ export default function BottomBar({ line, destination, linecolor }) {
   return (
     <>
       <div className="w-full fixed bottom-0 z-[9999] h-[7.5rem] bg-blue-500">
-        <Image
+    {line ?  <Image
           className="mt-5 ml-6"
           src={`/train-lines/sbahn-muc/${line}.svg`}
           alt={`${line} Logo (Ilustrational)`}
           height={180}
           width={180}
         />
+ : ''}
       </div>
       <div className="fixed bottom-2 left-48 z-[9999]">
         <span className={`text-white  ml-12 text-[4.5rem]`}>{destination}</span>

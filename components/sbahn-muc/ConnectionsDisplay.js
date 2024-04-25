@@ -25,12 +25,12 @@ export default async function ConnectionsDisplay({ibnr}){
         <>
         <div className="flex mt-3" key={connection.tripId}>
         <Image class="fixed " src={`/transportation-types/${connection.line.productName}.svg`} height="55" width="55" alt={`${connection.line.productName} Logo (illustarational)`}></Image> 
-        <span className="text-[2rem] ml-[5rem] mt-2">{connection.line.name.replace("STR", "").replace("BusSEV", "").replace("Bus", "")}</span>
+        <span className="text-[2rem] ml-[5rem] mt-2">{connection.line.name.replace("STR", "").replace("BusSEV", "").replace("Bus", "").replace("BRB", "")}</span>
        <span className="fixed left-56 text-[2rem] ml-4 mt-2">{ReplaceNames(connection.destination.name)}</span>
        <span className="fixed right-[11.5rem] text-[2rem] ml-4 mt-2">{FormatDate(connection.plannedWhen)}</span>
        <span className="fixed right-[2rem] text-[2rem] ml-4 mt-2">{"+ " + connection.delay /60 + " min"}</span>
        </div>
-       <div className="border-gray-300 w-[1222rem] border-t mt-1"></div>
+       <div className="border-white w-[1222rem] border-t mt-1"></div>
    </>
     ))}
     </div>
