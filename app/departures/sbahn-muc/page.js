@@ -42,7 +42,8 @@ export default async function SBahnInnenanzeiger({params, searchParams}){
         <>
         <div className="__screen overflow-hidden">
         <RefreshData />
-        <BackgroundWrapper />
+
+        {data.closestStopIndex != -1 ? <BackgroundWrapper /> : <div className="fixed top-0 left-0 right-0 bottom-[7rem] mt-[10rem] bg-gray-200 z-[-100]"></div> }
         <NextStationBar linecolor={themeconfig} nextStop={data.nextstop} nextStopStatus={data.closestStopStatus} />
         {data.renderconnections && <ConnectionsDisplay ibnr={data.nextstop.IBNR}/>} 
     <div className="mb-[10rem]"></div>
