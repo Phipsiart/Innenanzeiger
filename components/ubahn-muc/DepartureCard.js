@@ -4,17 +4,17 @@ export default function DepartureCard({nextstop, stopover, closestStopIndex}){
     return(
         <>
          {/*Top bar connection start */}
-         <div className="top-[9.3rem] fixed left-[16.8rem] mt-[1rem]">
-            {stopover.slice(closestStopIndex).map((stop) => (
-    <div className="flex" key={stop.tripId}>
-        <div className="fixed left-3 mt-5">
-            <AvailableTypesofConnections key={Math.random()} products={stop.typeofconnections} />
-        </div>
-        <span className="text-[3.6rem] mt-1">{stop.name}</span>
-        <span className="fixed right-9 text-[2.5rem] mt-4">{stop.arrival}</span>
-    </div>
-))}
-         </div>
+         <div className="mt-40">
+         {stopover.slice(closestStopIndex).map((stop, index) => (       
+        <div className="flex" key={index}>
+            <div className="h-[6rem]">
+                <AvailableTypesofConnections products={stop.typeofconnections} mainscreen={true} />
+             <span className="text-[3.6rem] fixed left-[16.8rem] mt-[0.2rem]">{stop.name}</span>
+             <span className="text-[2.8rem] fixed right-4 mt-[1.1rem]">{stop.arrival}</span>
+            </div>
+            </div>
+    ))}
+</div>
         </>
     )
 }

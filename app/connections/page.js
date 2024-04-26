@@ -30,7 +30,7 @@ export default async function Connections({  params, searchParams,}) {
       </TableHeader>
       <TableBody>
         {data.map((connection) => (
-          <TableRow  key={connection.tripId} tripId={connection.redirectto}  className={`cursor-pointer ${connection.tripId}`}>
+          <TableRow  key={Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, "0")} tripId={connection.redirectto}  className={`cursor-pointer ${connection.tripId}`}>
             <TableCell className="font-medium">{connection.line}</TableCell>
             <TableCell>{connection.destination}</TableCell>
             <TableCell>{connection.plannedDeparture}</TableCell>

@@ -1,5 +1,5 @@
-import { Innenanzeiger } from "../../../lib/departures/Innenanzeiger";
-import RefreshData from "../../../components/core/RefreshData";
+import { Innenanzeiger } from "@/lib/departures/Innenanzeiger";
+import RefreshData from "@/components/core/RefreshData";
 import BottomBar from "@/components/sbahn-muc/BottomBar";
 import BackgroundWrapper from "@/components/sbahn-muc/BackgroundWrapper"
 import NextStationBar from "@/components/sbahn-muc/NextStationBar"

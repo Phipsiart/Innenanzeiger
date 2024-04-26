@@ -1,10 +1,11 @@
 import MainHeadline from "../components/core/Mainheadline";
 import {SearchInput} from "../components/core/SearchInput";
 import Link from "next/link";
-
+import { Button } from "@/components/ui/button";
 export default function HomePage() {
   return (
     <>
+    <Button className="fixed top-2 right-2">Sign In</Button>
     <MainHeadline text="Welcome."  />
 <SearchInput />
 <div className="flex justify-center mt-12">

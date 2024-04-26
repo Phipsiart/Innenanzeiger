@@ -24,7 +24,7 @@ export default async function ConnectionsDisplay({ibnr}){
     {data.departures.map((connection) => (
         <>
         <div className="flex mt-3" key={connection.tripId}>
-        <Image class="fixed " src={`/transportation-types/${connection.line.productName}.svg`} height="55" width="55" alt={`${connection.line.productName} Logo (illustarational)`}></Image> 
+        <Image className="fixed " src={`/transportation-types/${connection.line.productName}.svg`} height="55" width="55" alt={`${connection.line.productName} Logo (illustarational)`}></Image> 
         <span className="text-[2rem] ml-[5rem] mt-2">{connection.line.name.replace("STR", "").replace("BusSEV", "").replace("Bus", "").replace("BRB", "")}</span>
        <span className="fixed left-56 text-[2rem] ml-4 mt-2">{ReplaceNames(connection.destination.name)}</span>
        <span className="fixed right-[11.5rem] text-[2rem] ml-4 mt-2">{FormatDate(connection.plannedWhen)}</span>

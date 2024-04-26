@@ -16,17 +16,17 @@ export default async function NextStopScreen({nextstop, renderstatus}){
             <div className="fixed left-6">
             <span className="font-bold text-[5rem]">{nextstop.name}</span>
            <AvailableTypesofConnections products={nextstop.typeofconnections} />
-           <div className="border-t border-gray-300 fixed w-[110rem] mt-4"></div>
+           <div className="border-t border-gray-300  fixed mt-4 left-5 right-[23rem]"></div>
            <div className="fixed right-[23rem] mt-4 text-[1.8rem]">
             <span>Abfahrten in Min.</span>
-            <p className="text-gray-500 italic">Abfahrt in Min.</p>
+            <p className="text-gray-500 italic">Departure in Min.</p>
            </div>
            <div className="flex text-[1.8rem] mt-4">
             <span>Verbindungen</span>
             <span className="text-gray-500 italic ml-4">Connections</span>
 
            </div>
-           <div className="border-t border-gray-300 w-[110rem] mt-12"></div>
+           <div className="border-t debug border-gray-300  fixed mt-12 left-5 right-[23rem]"></div>
            </div>
            <div className="fixed top-[26rem] left-4">
            {data.departures.map((connection) => (
