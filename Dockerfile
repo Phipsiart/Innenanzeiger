@@ -1,6 +1,7 @@
 FROM node:alpine
 RUN apk add --no-cache tzdata
 ENV TZ=Europe/Berlin
+ENV NODE_ENV production
 # Set the working directory inside the container
 WORKDIR /app
 
