@@ -16,3 +16,12 @@ export const sessionTable = pgTable("session", {
 		mode: "date"
 	}).notNull()
 });
+
+export const screenTable = pgTable("screen",{
+	id: text("id").primaryKey(),
+	belongsto: text("belongsto").notNull(),
+	tripId: text("tripId").notNull(),
+	typeofscreen: text("typeofscreen").notNull(),
+	screenname: text("screenname").notNull().unique(),
+	screenid: text("screenid").notNull().unique(),
+})

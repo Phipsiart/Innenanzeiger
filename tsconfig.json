@@ -34,7 +34,7 @@
     "**/*.tsx",
     "pages/sbahn-muc/departures.js",
     ".next/types/**/*.ts"
-, "app/layout.js", "components/core/SearchInput.js", "components/sbahn-muc/BottomBar.js"  ],
+, "app/layout.js", "components/core/SearchInput.js", "components/sbahn-muc/BottomBar.js", "components/dashboard/ShowScreens.js", "404.js"  ],
   "exclude": [
     "node_modules"
   ]

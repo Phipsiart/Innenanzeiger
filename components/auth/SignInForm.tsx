@@ -60,9 +60,6 @@ export  function SignInForm(){
               <FormControl>
                 <Input placeholder="coolpeter123" {...field} />
               </FormControl>
-              <FormDescription>
-                Enter here your username. Once set, it cannot be changed.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -76,9 +73,6 @@ export  function SignInForm(){
               <FormControl>
                 <Input placeholder="****" type="password" {...field} />
               </FormControl>
-              <FormDescription>
-                Choose a secure password.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
