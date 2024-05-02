@@ -36,3 +36,8 @@
    100% { width: 100%; }
 
 }
+.font-fix{
+  font-family: Myriad Pro !important;
+  font-style: normal !important;
+  font-weight:400;
+}

@@ -40,7 +40,7 @@ export default async function SBahnInnenanzeiger({params, searchParams}){
     const tripId= searchParams.tripId;  
     return(
         <>
-        <div className="__screen overflow-hidden">
+        <div className="__screen font-fix">
         <RefreshData />
 
         {data.closestStopIndex != -1 ? <BackgroundWrapper /> : <div className="fixed top-0 left-0 right-0 bottom-[7rem] mt-[10rem] bg-gray-200 z-[-100]"></div> }
