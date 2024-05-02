@@ -71,6 +71,10 @@ pnpm dev
 # or
 bun dev
 ```
+Large portions of the authentication system logic in this project are derived from a video tutorial by Ugur Kellecioglu. 
+
+The original code is provided under the MIT License and can be found in [this](https://github.com/ugurkellecioglu/next-14-lucia-auth-postgresql-drizzle-typescript-example) repository.
+
 ## We Love Contributions! ❤️
 
 Contributions of any kind are more than welcome. Feel free to report problems or make a pull request. We’re all ears! 🐰
