@@ -1,5 +1,3 @@
-export default function Screen(){
-    return(
-        <></>
-    )
+export default function Screen() {
+  return <></>;
 }

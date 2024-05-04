@@ -1,17 +1,13 @@
-"use client";
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Input } from "../ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+'use client';
+import * as React from 'react';
+import { useRouter } from 'next/navigation';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { Input } from '../ui/input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export function SearchInput() {
   const router = useRouter();
@@ -22,8 +18,8 @@ export function SearchInput() {
   });
 
   const Redirect = () => {
-    const from = document.getElementById("from").value || "München Hbf";
-    const to = document.getElementById("to").value || "Berlin Hbf";
+    const from = document.getElementById('from').value || 'München Hbf';
+    const to = document.getElementById('to').value || 'Berlin Hbf';
     console.log(from, to, dateTime);
     router.push(`/connections?from=${from}&to=${to}&departure=${dateTime}`);
   };
@@ -37,16 +33,13 @@ export function SearchInput() {
         <Popover>
           <PopoverTrigger asChild>
             <Button
-              variant={"outline"}
-              className={cn(
-                "w-[280px] justify-start text-left font-normal",
-                !dateTime && "text-muted-foreground"
-              )}
+              variant={'outline'}
+              className={cn('w-[280px] justify-start text-left font-normal', !dateTime && 'text-muted-foreground')}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {dateTime ? (
-    <span>{format(new Date(dateTime), "MMMM do, yyyy 'at' HH:mm")}</span>
-                ) : (
+                <span>{format(new Date(dateTime), "MMMM do, yyyy 'at' HH:mm")}</span>
+              ) : (
                 <span>Pick a date</span>
               )}
             </Button>
@@ -64,9 +57,9 @@ export function SearchInput() {
             <div className="flex justify-center pb-4 pt-4">
               <Input
                 type="time"
-                value={format(new Date(dateTime), "HH:mm")}
+                value={format(new Date(dateTime), 'HH:mm')}
                 onChange={(event) => {
-                  const time = event.target.value.split(":");
+                  const time = event.target.value.split(':');
                   const date = new Date(dateTime);
                   date.setHours(parseInt(time[0]));
                   date.setMinutes(parseInt(time[1]));

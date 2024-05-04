@@ -1,11 +1,10 @@
 import { validateRequest } from '@/lib/auth';
-import Link from 'next/link';
 import MainHeadline from '@/components/core/Mainheadline';
-import { signOut } from '../actions/auth.actions';
+import { signOut } from '../../actions/auth.actions';
 import { Button } from '@/components/ui/button';
-import ShowScreens from '@/components/dashboard/ShowScreens';
-import { RedirectType, redirect } from 'next/navigation';
-export default async function DashboardHomePage() {
+import EditScreen from '@/components/dashboard/EditScreen';
+import { redirect } from 'next/navigation';
+export default async function DashboardScreen() {
   const { user } = await validateRequest();
   if (!user) {
     redirect('/sign-in');
@@ -16,7 +15,7 @@ export default async function DashboardHomePage() {
         <Button type="submit">Sign Out</Button>
       </form>
       <MainHeadline text={`Dashboard`} />
-      <ShowScreens user={user} />
+      <EditScreen user={user} />
     </>
   );
 }

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,9 +14,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "plugins": [
       {
@@ -33,9 +27,12 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/sbahn-muc/departures.js",
-    ".next/types/**/*.ts"
-, "app/layout.js", "components/core/SearchInput.js", "components/sbahn-muc/BottomBar.js", "components/dashboard/ShowScreens.js", "404.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    ".next/types/**/*.ts",
+    "app/layout.js",
+    "components/core/SearchInput.js",
+    "components/sbahn-muc/BottomBar.js",
+    "components/dashboard/ShowScreens.js",
+    "404.js"
+  ],
+  "exclude": ["node_modules"]
 }

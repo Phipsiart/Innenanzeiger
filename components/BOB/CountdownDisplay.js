@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState, useEffect } from 'react';
 import ReplaceNames from '../../lib/filter/ReplaceNames';
 const CountdownDisplay = ({ destination, nextStop }) => {
@@ -64,15 +64,25 @@ const CountdownDisplay = ({ destination, nextStop }) => {
 
   return (
     <>
-    <div className="text-[8rem] text-center text-[#2c4958] ">
-      {nextStopMessage ? 
-        <>
-         {showStopName && <p className='nextstoptopbar nextstopanimation'>{nextStop.stop.name.replace(/München-/g, "").split("Gl.")[0].trim().replace(/, München/g, '')}</p>}
-        </> 
-        : 
-        showFullDate ? formattedTime : destination
-      }
-    </div>
+      <div className="text-[8rem] text-center text-[#2c4958] ">
+        {nextStopMessage ? (
+          <>
+            {showStopName && (
+              <p className="nextstoptopbar nextstopanimation">
+                {nextStop.stop.name
+                  .replace(/München-/g, '')
+                  .split('Gl.')[0]
+                  .trim()
+                  .replace(/, München/g, '')}
+              </p>
+            )}
+          </>
+        ) : showFullDate ? (
+          formattedTime
+        ) : (
+          destination
+        )}
+      </div>
     </>
   );
 };

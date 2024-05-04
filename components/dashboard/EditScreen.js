@@ -1,15 +1,21 @@
 import { screenTable } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { and } from 'drizzle-orm';
 import db from '@/lib/db';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
-export default async function ShowScreens({ user }) {
-  const fetchdata = await db.select().from(screenTable).where(eq(screenTable.belongsto, user?.id));
+export default async function EditScreen({ user }) {
+  // display only the current screen from the screen table from the database where the screenid and the userid match
+  const fetchdata = await db
+    .select()
+    .from(screenTable)
+    .where(and(eq(screenTable.screenid, 'ccc084bdec8b649fa0ccd0d0129a9cdf'), eq(screenTable.belongsto, user?.id)));
+
   const data = fetchdata;
   console.log(data);
   return (
     <>
-      <h3 className="text-center mt-12 text-3xl font-bold">Your screens.</h3>
+      <h3 className="text-center mt-12 text-3xl font-bold debug">Your screens.</h3>
       <div className="flex justify-center flex-wrap mt-12 space-x-4 space-y-4">
         {data.map((screen, index) => (
           <>
