@@ -1,8 +1,10 @@
-import MainHeadline from '../components/core/Mainheadline';
+import MainHeadline from '../components/core/MainHeadline';
 import Link from 'next/link';
+import Header from '@/components/Header';
 export default function HomePage() {
   return (
     <>
+      <Header />
       <MainHeadline text="Innenanzeiger" />
       <div className="flex justify-center mt-12">
         <div className="max-w-[30rem]">

@@ -1,5 +1,5 @@
-import GetConnections from '../../lib/getconnections';
-import MainHeadline from '../../components/core/MainHeadline';
+import GetConnections from '@/lib/getconnections';
+import MainHeadline from '@/components/core/MainHeadline';
 import {
   Table,
   TableBody,
@@ -10,9 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-export default async function Connections({ params, searchParams }) {
+export default async function ChooseConnection({ params, searchParams }) {
   const data = await GetConnections(searchParams.from, searchParams.to, searchParams.departure);
-  console.log(data);
   return (
     <>
       <MainHeadline text="Connections" />

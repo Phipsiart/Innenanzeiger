@@ -1,6 +1,7 @@
-import MainHeadline from '@/components/core/Mainheadline';
+import MainHeadline from '@/components/core/MainHeadline';
 import { SignInForm } from '@/components/auth/SignInForm';
 import Link from 'next/link';
+import Header from '@/components/Header';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { validateRequest } from '@/lib/auth';
 import { redirect } from 'next/navigation';
@@ -11,6 +12,7 @@ export default async function SignInPage() {
   }
   return (
     <>
+      <Header />
       <div className="flex h-screen">
         <div className="m-auto">
           <Card className="ml-10 mr-10">

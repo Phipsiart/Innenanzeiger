@@ -16,7 +16,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <link rel="icon" href="/logo/logo.svg" />
       <body className={inter.className}>
-        <Header />
         <NextTopLoader
           color="#22c55e"
           initialPosition={0.08}

@@ -1,9 +1,10 @@
-import MainHeadline from '@/components/core/Mainheadline';
+import MainHeadline from '@/components/core/MainHeadline';
 import { SearchInput } from '@/components/core/SearchInput';
-import Link from 'next/link';
+import Header from '@/components/Header';
 export default function SearchPage() {
   return (
     <>
+      <Header />
       <MainHeadline text="Welcome." />
       <SearchInput />
       <div className="flex justify-center mt-12">

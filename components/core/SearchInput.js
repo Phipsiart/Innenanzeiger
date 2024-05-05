@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Input } from '../ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-
+import AutoCompleteSearch from './AutoCompleteSearch';
 export function SearchInput() {
   const router = useRouter();
 
@@ -26,8 +26,8 @@ export function SearchInput() {
 
   return (
     <div className="flex justify-center mt-12 flex-wrap ">
-      <Input type="text" placeholder="From" id="from" className="transition-all max-w-[14rem] mr-2 mt-2 " />
-      <Input type="text" placeholder="To" id="to" className="transition-all max-w-[14rem] mr-2 mt-2" />
+      <AutoCompleteSearch placeholder="From" inputid="from" />
+      <AutoCompleteSearch placeholder="To" inputid="to" />
 
       <div className="mt-2">
         <Popover>

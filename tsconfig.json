@@ -32,7 +32,11 @@
     "components/core/SearchInput.js",
     "components/sbahn-muc/BottomBar.js",
     "components/dashboard/ShowScreens.js",
-    "404.js"
+    "404.js",
+    "app/dashboard/screen/page.js",
+    "app/api/search/route.js",
+    "components/core/AutoCompleteSearch.js",
+    "components/core/AutoCompleteSearch.js"
   ],
   "exclude": ["node_modules"]
 }

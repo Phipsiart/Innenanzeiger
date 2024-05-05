@@ -1,5 +1,5 @@
-import MainHeadline from '@/components/core/Mainheadline';
 import { SignUpForm } from '@/components/auth/SignUpForm';
+import Header from '@/components/Header';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { validateRequest } from '@/lib/auth';
@@ -12,6 +12,7 @@ export default async function SignUpPage() {
   }
   return (
     <>
+      <Header />
       <div className="flex h-screen">
         <div className="m-auto">
           <Card className="ml-10 mr-10">
