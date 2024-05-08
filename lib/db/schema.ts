@@ -1,5 +1,5 @@
 import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
-import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
+import { integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 export const userTable = pgTable('user', {
   id: text('id').primaryKey(),
   username: text('username').notNull().unique(),
@@ -18,7 +18,7 @@ export const sessionTable = pgTable('session', {
 });
 
 export const screenTable = pgTable('screen', {
-  id: text('id').primaryKey(),
+  id: integer('id').primaryKey(),
   belongsto: text('belongsto').notNull(),
   tripId: text('tripId').notNull(),
   typeofscreen: text('typeofscreen').notNull(),

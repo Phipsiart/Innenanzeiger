@@ -4,7 +4,7 @@ import BOBLines from '../../components/BOB/BOBLines';
 import BOBClock from '../../components/BOB/BOBClock';
 import RefreshData from '../../components/core/RefreshData';
 
-export default async function Home({ params, searchParams }) {
+export default async function BOBInnenanzeiger({ params, searchParams }) {
   const data = await Innenanzeiger(searchParams.tripId);
   const Line = data.line;
   const tripId = searchParams.tripId;
