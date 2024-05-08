@@ -4,8 +4,8 @@ import BackgroundWrapper from '@/components/sbahn-muc/BackgroundWrapper';
 import NextStopScreen from '@/components/ubahn-muc/NextStopScreen';
 import { Innenanzeiger } from '@/lib/departures/Innenanzeiger';
 import RefreshData from '@/components/core/RefreshData';
-export default async function UBahnMucInnenanzeiger({ params, searchParams }) {
-  const data = await Innenanzeiger(searchParams.tripId);
+export default async function UBahnMucInnenanzeiger({ tripId }) {
+  const data = await Innenanzeiger(tripId);
   return (
     <>
       <RefreshData />

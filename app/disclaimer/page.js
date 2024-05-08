@@ -1,4 +1,4 @@
-import MainHeadline from '@/components/core/Mainheadline';
+import MainHeadline from '@/components/core/MainHeadline';
 export default function DisclamerPage() {
   return (
     <>

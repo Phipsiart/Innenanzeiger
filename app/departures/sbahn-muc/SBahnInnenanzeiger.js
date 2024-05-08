@@ -4,8 +4,8 @@ import BottomBar from '@/components/sbahn-muc/BottomBar';
 import BackgroundWrapper from '@/components/sbahn-muc/BackgroundWrapper';
 import NextStationBar from '@/components/sbahn-muc/NextStationBar';
 import ConnectionsDisplay from '@/components/sbahn-muc/ConnectionsDisplay';
-export default async function SBahnInnenanzeiger({ params, searchParams }) {
-  const data = await Innenanzeiger(searchParams.tripId);
+export default async function SBahnInnenanzeiger({ tripId }) {
+  const data = await Innenanzeiger(tripId);
   // an easy way to set the colors for the lines accordingly.
   //themeconfig is a string that supplies the color to the components
   //so that they can be themed accordingly for their line,
@@ -37,7 +37,6 @@ export default async function SBahnInnenanzeiger({ params, searchParams }) {
   }
   const stopovers = data.stopovers;
   var nextStops = stopovers.slice(data.closestStopIndex + 1, data.closestStopIndex + 22) || 0;
-  const tripId = searchParams.tripId;
   return (
     <>
       <div className="__screen font-fix">
