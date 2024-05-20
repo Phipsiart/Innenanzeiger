@@ -4,7 +4,7 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
     <>
       {mainscreen ? (
         <div
-          className="flex fixed mt-5 left-2"
+          className="flex fixed mt-8 left-2  justify-end"
           key={Math.floor(Math.random() * 0xffffff)
             .toString(16)
             .padEnd(6, '0')}
@@ -13,8 +13,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               src="/transportation-types/Bus.svg"
               className=""
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="Bus Logo (illustrational)"
             ></Image>
           ) : (
@@ -24,8 +24,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               className="ml-2"
               src="/transportation-types/STR.svg"
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="Tram Logo (illustrational)"
             ></Image>
           ) : (
@@ -35,8 +35,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               className="ml-2"
               src="/transportation-types/S.svg"
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="S Logo (illustrational)"
             ></Image>
           ) : (
@@ -46,8 +46,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               className="ml-2"
               src="/transportation-types/R.svg"
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="R Logo (illustrational)"
             ></Image>
           ) : (
@@ -65,8 +65,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               src="/transportation-types/Bus.svg"
               className=""
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="Bus Logo (illustrational)"
             ></Image>
           ) : (
@@ -76,8 +76,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               className="ml-2"
               src="/transportation-types/STR.svg"
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="Tram Logo (illustrational)"
             ></Image>
           ) : (
@@ -87,8 +87,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               className="ml-2"
               src="/transportation-types/S.svg"
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="S Logo (illustrational)"
             ></Image>
           ) : (
@@ -98,8 +98,8 @@ export default function AvailableTypesofConnections({ products, mainscreen }) {
             <Image
               className="ml-2"
               src="/transportation-types/R.svg"
-              height={52}
-              width={52}
+              height={36}
+              width={36}
               alt="R Logo (illustrational)"
             ></Image>
           ) : (
