@@ -10,6 +10,8 @@ export default async function NextStopScreen({ nextstop, }) {
   const data = await fetchdata.json();
   return (
     <>
+    {/*This line overlaps the line of the arrow */}
+    <div className='z-[10200] top-0 left-[13rem] fixed p-4 h-28 bg-white'></div>
       <div className="fixed left-[16rem] top-4 z-[10200] text-[1.8rem] block">
         <span>Nächster Halt</span>
         <p className="text-gray-500 italic">Next Stop</p>
