@@ -14,7 +14,7 @@ export default function TopBar({ line, nextStopStatus, closestStopIndex, RenderC
         <span className="text-[3.2rem]">{RenderCurrentTime}</span>
       </div>
       <div className="h-32 bg-white fixed top-0 w-full z-[4998]">
-        <Image className="mt-3 ml-8" src={`/train-lines/ubahn-muc/${line}.svg`} height={160} width={160} alt=''></Image>
+        <Image className="mt-3 ml-8" src={`/train-lines/ubahn-muc/${line}.svg`} height={160} width={160} alt=""></Image>
         <div className="fixed left-[17rem] text-[1.3rem] mt-4">
           <span className="">{status}</span>
           <span className="ml-2 italic text-gray-500">{statuseng}</span>

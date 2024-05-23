@@ -4,7 +4,7 @@ import BackgroundWrapper from '@/components/ubahn-muc/BackgroundWrapper';
 import NextStopScreen from '@/components/ubahn-muc/NextStopScreen';
 import { Innenanzeiger } from '@/lib/departures/Innenanzeiger';
 import RefreshData from '@/components/core/RefreshData';
-import UbBahnLines from '@/components/ubahn-muc/UBahnLines'
+import UbBahnLines from '@/components/ubahn-muc/UBahnLines';
 export default async function UBahnMucInnenanzeiger({ tripId }) {
   const data = await Innenanzeiger(tripId);
   return (
@@ -23,7 +23,7 @@ export default async function UBahnMucInnenanzeiger({ tripId }) {
         nextStopStatus={data.closestStopStatus}
         closestStopIndex={data.closestStopIndex}
       />
-      {data.renderconnections && <NextStopScreen nextstop={data.nextstop} />} 
+      {data.renderconnections && <NextStopScreen nextstop={data.nextstop} />}
       <BackgroundWrapper />
     </>
   );
