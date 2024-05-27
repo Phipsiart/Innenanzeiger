@@ -1,45 +1,55 @@
-# Welcome to the "Innenanzeiger" Project! 🚂
+# Welcome to the "Innenanzeiger" Project
 
-Hello there! 👋 Welcome to "Innenanzeiger", or in English, "The Interior Display". This is a fun web app that emulates the journey of a train, just like a passenger information system on a real train. Isn't that cool? 🚄
+Greetings! Welcome to "Innenanzeiger," or "The Interior Display" in English. This web application simulates the journey of a train, emulating the passenger information systems found on real trains. Isn’t that fascinating?
 
-# A Friendly Reminder 📝
 
-Just so you know, this project is an emulation of various displays from railway companies in Germany. We use all brands and trademarks, including but not limited to Bayerische Regiobahn and S-Bahn München, solely for the purpose of creating a realistic emulation. They do not indicate any kind of connection, endorsement, or authorization by the respective companies. All rights belong to their respective owners.
+But a picture says more than 1000 words. Here are our currently supported displays:
 
-Also, it's important to note that the data we use is provided without warranty. While we strive to provide accurate and up-to-date information, please be aware that the displayed information isn't the same as in the trains. Due to technical limitations, it's not possible to replicate the exact data from the trains.
+### S-Bahn München
+![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/2af5bdfe-7f1b-4e73-8964-5f08141a89fc)
+### U-Bahn München
+![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/9550f471-a8b1-4cf6-bd5f-bfa6a7ec2c6d)
+### Bayerische Regiobahn
+![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/d5d96d7d-7226-4923-a6ab-89061c7b379f)
 
-So, enjoy the app, but remember to check the official sources for the most accurate information! 🚄
+# Important Notice
 
-## Exciting Features 🎉
+Please note that this project emulates various displays from railway companies in Germany. The use of all brands and trademarks, including but not limited to Bayerische Regiobahn and S-Bahn München, is solely for the purpose of creating a realistic simulation. This does not imply any connection, endorsement, or authorization by the respective companies. All rights are retained by their respective owners.
 
-- We emulate various Displays from railway companies in Germany based on realtime data from the db-rest API.
-- Our app shows the next stop, delays, and the current state of the train at the station.
-- We even display connections for each stop (only available at S-Bahn München & U-Bahn München (alpha) simulations).
+Additionally, it is important to understand that the data we use is provided without warranty. While we strive to offer accurate and up-to-date information, the displayed information may not always match that on the trains. Due to technical limitations, it is not possible to replicate the exact data from the trains.
 
-## Currrently supported railway systems 🚄
+Please enjoy the app and remember to consult official sources for the most accurate information.
+
+## Exciting Features
+
+- Emulation of various displays from German railway companies based on real-time data from the db-rest API.
+- Displays the next stop, delays, and the current status of the train at the station.
+- Shows connections for each stop (currently available in the S-Bahn München & U-Bahn München (alpha) simulations).
+
+## Supported Railway Systems
 
 - Bayerische Regiobahn
 - S-Bahn München
-- U-Bahn München (alpha): We’re still fine-tuning this one, but you can already catch a glimpse of the Munich U-Bahn system DFI!
+- U-Bahn München (alpha): This feature is still in its early stages, but you can already experience a glimpse of the Munich U-Bahn system DFI.
 
-## On Our To-Do List 📋
+## Upcoming Features
 
-- [ ] We're planning to add live tracking to show the train on a map.
-- [ ] We're also working on translating the UI to English.
+- Live tracking to display the train’s location on a map.
+- Translating the user interface to English.
 
-## Let's Get Started! 🚀
+## Getting Started
 
-This project is made with Next.js and Tailwind CSS. Excited to get started? We are too!
+This project is developed using Next.js and Tailwind CSS. Ready to dive in? We are too!
 
-## What You'll Need 🛠️
+## Requirements
 
 - Node.js
-- A package manager like yarn or npm
+- A package manager such as yarn or npm
 - db-rest
 
-## Let's Install Some Stuff! 💻
+## Installation Instructions
 
-First things first, let's install all dependencies for the frontend:
+First, install all dependencies for the frontend:
 
 ```bash
 npm install
@@ -51,23 +61,23 @@ pnpm install
 bun install
 ```
 
-## Setting up the API 🌐
+## API Setup
 
-Our project works with the fantastic db-rest API to retrieve data for current departures and trains. A public instance is available at v6.db.transport.rest.
+This project utilizes the db-rest API to retrieve data for current departures and trains. A public instance is available at v6.db.transport.rest.
 
-Create an .env file by copying the old one:
+Create an .env file by copying the example file:
 
 ```bash
 cp .env.example .env
 ```
 
-Set the API_INSTANCE variable to a host name on which db-rest is running, e.g. v6.db.transport.rest:
+Set the `API_INSTANCE` variable to the host name where db-rest is running, for example, v6.db.transport.rest:
 
 ```bash
-API_INSTANCE=v6.db.transport.rest # or any other name
+API_INSTANCE=v6.db.transport.rest # or another appropriate hostname
 ```
 
-## Time to Run the Development Server! 🏃‍♀️
+## Running the Development Server
 
 ```bash
 npm run dev
@@ -79,10 +89,8 @@ pnpm dev
 bun dev
 ```
 
-Large portions of the authentication system logic in this project are derived from a video tutorial by Ugur Kellecioglu.
+Large portions of the authentication system logic in this project are derived from a video tutorial by Ugur Kellecioglu. The original code is provided under the MIT License and can be found in [this repository](https://github.com/ugurkellecioglu/next-14-lucia-auth-postgresql-drizzle-typescript-example).
 
-The original code is provided under the MIT License and can be found in [this](https://github.com/ugurkellecioglu/next-14-lucia-auth-postgresql-drizzle-typescript-example) repository.
+## Contributions Are Welcome
 
-## We Love Contributions! ❤️
-
-Contributions of any kind are more than welcome. Feel free to report problems or make a pull request. We’re all ears! 🐰
+We welcome contributions of any kind. Feel free to report issues or submit a pull request. We are eager to hear from you!
