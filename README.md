@@ -14,7 +14,7 @@ But a picture says more than 1000 words. Here are our currently supported displa
 
 # Important Notice
 
-Please note that this project emulates various displays from railway companies in Germany. The use of all brands and trademarks, including but not limited to Bayerische Regiobahn and S-Bahn München, is solely for the purpose of creating a realistic simulation. This does not imply any connection, endorsement, or authorization by the respective companies. All rights are retained by their respective owners.
+Please note that this project emulates various displays from railway companies in Germany. The use of all brands and trademarks, including but not limited to Bayerische Regiobahn, S-Bahn München and U-Bahn München is solely for the purpose of creating a realistic simulation. This does not imply any connection, endorsement, or authorization by the respective companies. All rights are retained by their respective owners.
 
 Additionally, it is important to understand that the data we use is provided without warranty. While we strive to offer accurate and up-to-date information, the displayed information may not always match that on the trains. Due to technical limitations, it is not possible to replicate the exact data from the trains.
 
