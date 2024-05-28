@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Toaster />
         {/* Layout UI */}
         <div className="__innenanzeiger">{children}</div>
-        <div className="fixed bottom-1 right-2 text-[0.7rem] flex z-[100] ">
+        <div className="fixed bottom-1 right-2 text-[0.7rem] flex z-[-100] ">
           <Link href="/disclaimer" className="text-red-500 font-bold ">
             Disclaimer
           </Link>

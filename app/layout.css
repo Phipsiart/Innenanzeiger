@@ -63,3 +63,11 @@
     width: 100%;
   }
 }
+.maplibregl-popup-content{
+  border-radius: 0.5rem;
+  padding-top: 1rem;
+}
+.maplibregl-marker{
+  transition: transform 0.2s ease !important;
+}
+
