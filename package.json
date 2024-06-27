@@ -34,6 +34,7 @@
     "drizzle-orm": "^0.30.10",
     "fuse.js": "^7.0.0",
     "init": "^0.1.2",
+    "lodash.template": "^4.5.0",
     "lucia": "^3.2.0",
     "lucide-react": "^0.364.0",
     "maplibre-gl": "^4.3.2",
@@ -70,5 +71,6 @@
     "prettier": "3.2.5",
     "tailwindcss": "^3.4.3",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }
