@@ -4,7 +4,9 @@ import ShowConnectionDetails from '../../components/core/ShowConnectionDetails';
 import Header from '@/components/Header';
 export default async function Connections({ params, searchParams }) {
   const data = await GetConnections(searchParams.from, searchParams.to, searchParams.departure);
+
   console.log(data);
+
   return (
     <>
       <Header />

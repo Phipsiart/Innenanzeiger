@@ -33,7 +33,7 @@ export default function TrainMap({tripId}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/map/getposition?tripId=${tripId}`); // Replace with your JSON data URL
+        const response = await fetch(`/api/map/getposition?tripId=${encodeURIComponent(tripId)}`); // Replace with your JSON data URL
         const data = await response.json();
         const { latitude, longitude } = data.data.currentLocation; // Adjust the path according to your JSON structure
 
@@ -135,7 +135,7 @@ export default function TrainMap({tripId}) {
   }, [lng, lat, speed, LineData, Destination]);
 
   return (
-    <div className="map-wrap absolute w-full z-[40]">
+    <div className="map-wrap absolute w-full z-[820]">
       <div ref={mapContainer} className="map relative h-screen" />
     </div>
   );

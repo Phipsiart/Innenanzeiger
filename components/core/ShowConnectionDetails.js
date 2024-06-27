@@ -18,7 +18,7 @@ export default function ShowConnectionDetails({ legs }) {
               ) : (
                 <Link
                   key={`${leg.id}-${leg.line}-${leg.plannedDeparture}`}
-                  href={`/departures?tripId=${leg.tripId}`}
+                  href={`/departures/${encodeURIComponent(leg.tripId)}`}
                   className="m-2 bg-gray-300 hover:bg-gray-800 hover:text-white transition-all p-2 rounded-lg mt-2 flex justify-between items-center"
                 >
                   <div className="flex flex-col">

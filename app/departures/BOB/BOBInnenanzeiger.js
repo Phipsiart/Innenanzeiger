@@ -5,6 +5,7 @@ import BOBClock from '@/components/BOB/BOBClock';
 import RefreshData from '@/components/core/RefreshData';
 
 export default async function BOBInnenanzeiger({ tripId }) {
+  console.log('Trip Id BOB Innenanzeiger', tripId);
   const data = await Innenanzeiger(tripId);
   const Line = data.line;
   const Destination = data.Destination;
