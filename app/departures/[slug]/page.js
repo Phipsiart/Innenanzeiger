@@ -12,10 +12,10 @@ export default async function DeparturePage({ params }) {
  console.log(data)
   return (
     <>
-      {data === 'default' ? <BOBInnenanzeiger tripId={tripId} /> : null}
-      {data === 'sbahn-muc' ? <SBahnInnenanzeiger tripId={tripId} /> : null}
-      {data === 'ubahn-muc' ? <UBahnMucInnenanzeiger tripId={tripId} /> : null}
-      {data === 'ICE' ? <ICEInnenanzeiger tripId={tripId} /> : null}
+      {data.typeoftransport === 'default' ? <BOBInnenanzeiger tripId={tripId} /> : null}
+      {data.typeoftransport === 'sbahn-muc' ? <SBahnInnenanzeiger tripId={tripId} /> : null}
+      {data.typeoftransport === 'ubahn-muc' ? <UBahnMucInnenanzeiger tripId={tripId} /> : null}
+      {data.typeoftransport === 'ICE' ? <ICEInnenanzeiger tripId={tripId} /> : null}
       {data.typeoftransport === 'error-occured' ? 
       <>
       <Header />
