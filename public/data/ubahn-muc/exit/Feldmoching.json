@@ -1,0 +1,15 @@
+{
+  "description": "This file represents the side of the exit for the U-Bahn Line U2 to Feldmoching (experimental)",
+
+  "stops": {
+    "Messestadt Ost": "left",
+    "Messestadt West": "left",
+    "Moosfeld": "left",
+    "Trudering": "left",
+    "Kreillerstraße": "left",
+    "Josephsburg": "left",
+    "Innsbrucker Ring": "right",
+    "Karl-Preis-Platz": "left",
+    "Giesing": "left"
+  }
+}

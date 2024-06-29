@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-export default function TrainMap({tripId}) {
+export default function TrainMap({ tripId }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const marker = useRef(null);
@@ -12,19 +12,19 @@ export default function TrainMap({tripId}) {
   const [lat, setLat] = useState(52.520008);
   const [zoom] = useState(13);
   const [speed, setSpeed] = useState(null); // State to store the speed
-  const [LineData, setLineData] = useState("")
-  const [Destination, setDestination] = useState("")
+  const [LineData, setLineData] = useState('');
+  const [Destination, setDestination] = useState('');
   let previousCoordinates = useRef({ lng, lat });
   let previousTimestamp = useRef(Date.now());
 
   const haversineDistance = (coords1, coords2) => {
-    const toRad = (x) => x * Math.PI / 180;
+    const toRad = (x) => (x * Math.PI) / 180;
     const R = 6371e3; // Earth radius in meters
     const dLat = toRad(coords2.lat - coords1.lat);
     const dLng = toRad(coords2.lng - coords1.lng);
-    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-              Math.cos(toRad(coords1.lat)) * Math.cos(toRad(coords2.lat)) *
-              Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRad(coords1.lat)) * Math.cos(toRad(coords2.lat)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
     return distance;
@@ -52,8 +52,8 @@ export default function TrainMap({tripId}) {
         setLng(longitude);
         setLat(latitude);
         setSpeed(calculatedSpeed);
-        setLineData(data.data.line || 'n/a')
-        setDestination(data.data.destination)
+        setLineData(data.data.line || 'n/a');
+        setDestination(data.data.destination);
         previousCoordinates.current = { lng: longitude, lat: latitude };
         previousTimestamp.current = currentTimestamp;
 
@@ -77,7 +77,7 @@ export default function TrainMap({tripId}) {
       container: mapContainer.current,
       style: 'https://tiles.leberkasrechner.de/styles/osm-bright/style.json',
       center: [lng, lat],
-      zoom: zoom
+      zoom: zoom,
     });
 
     // Create a custom HTML element for the marker
@@ -90,8 +90,7 @@ export default function TrainMap({tripId}) {
     el.style.borderRadius = '50%';
     el.style.border = '2px solid white';
 
-    marker.current = new maplibregl.Marker(el)
-      .setLngLat([lng, lat]);
+    marker.current = new maplibregl.Marker(el).setLngLat([lng, lat]);
 
     popup.current = new maplibregl.Popup({ closeOnClick: false }) // Ensure popup remains open
       .setHTML(`
@@ -104,28 +103,26 @@ export default function TrainMap({tripId}) {
 
     marker.current.setPopup(popup.current).addTo(map.current);
     popup.current.addTo(map.current);
-
   }, [lng, lat, zoom, speed]);
 
   useEffect(() => {
     if (map.current && marker.current) {
-
       map.current.easeTo({
         center: [lng, lat],
-        essential: true, 
+        essential: true,
         duration: 2000,
       });
       marker.current.togglePopup();
 
       marker.current.setLngLat([lng, lat]);
-      
+
       // Update popup content
       if (popup.current) {
         popup.current.setHTML(`
           <div style=" font-size: 14px;">
             <h3 style="margin: 0; font-size: 16px;">${LineData.name}</h3>
             <p>to ${Destination}
-            <p style="marigin: 0;">Speed: ${speed ? (Math.round(speed * 3.6)): '0'} km/h</p>
+            <p style="marigin: 0;">Speed: ${speed ? Math.round(speed * 3.6) : '0'} km/h</p>
           </div>`);
       }
 

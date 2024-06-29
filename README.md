@@ -2,14 +2,18 @@
 
 Greetings! Welcome to "Innenanzeiger," or "The Interior Display" in English. This web application simulates the journey of a train, emulating the passenger information systems found on real trains. Isn’t that fascinating?
 
-
 But a picture says more than 1000 words. Here are our currently supported displays:
 
 ### S-Bahn München
+
 ![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/2af5bdfe-7f1b-4e73-8964-5f08141a89fc)
+
 ### U-Bahn München
+
 ![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/9550f471-a8b1-4cf6-bd5f-bfa6a7ec2c6d)
+
 ### Bayerische Regiobahn
+
 ![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/d5d96d7d-7226-4923-a6ab-89061c7b379f)
 
 # Important Notice

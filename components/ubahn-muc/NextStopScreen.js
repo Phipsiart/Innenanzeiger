@@ -8,6 +8,8 @@ export default async function NextStopScreen({ nextstop }) {
     `https://${API_INSTANCE}/stops/${nextstop.IBNR}/departures?results=5&taxi?false&duration=12800&national=false&nationalExpress=false`
   );
   const data = await fetchdata.json();
+  const fetchexitside = await fetch('http://127.0.0.1:3000/data/ubahn-muc/exit/Feldmoching.json');
+  const exitside = await fetchexitside.json();
   return (
     <>
       {/*This line overlaps the line of the arrow */}
@@ -15,6 +17,30 @@ export default async function NextStopScreen({ nextstop }) {
       <div className="fixed left-[16rem] top-4 z-[10200] text-[1.8rem] block">
         <span>Nächster Halt</span>
         <p className="text-gray-500 italic">Next Stop</p>
+        {exitside.stops[nextstop.name] === 'right' ? (
+          <>
+            <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
+            <Image
+              className="fixed top-3.5 ml-[14rem]"
+              src="/train-lines/ubahn-muc/exit-right.png"
+              width={157}
+              height={93}
+              alt=""
+            />
+          </>
+        ) : null}
+        {exitside.stops[nextstop.name] === 'left' ? (
+          <>
+            <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
+            <Image
+              className="fixed top-3.5 ml-[14rem]"
+              src="/train-lines/ubahn-muc/exit-left.png"
+              width={157}
+              height={93}
+              alt=""
+            />
+          </>
+        ) : null}
       </div>
       <div className="bg-white fixed z-[9999] top-[7rem] left-0 bottom-0 h-screen right-0">
         <div className="fixed left-6">
