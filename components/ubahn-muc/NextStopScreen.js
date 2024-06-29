@@ -4,11 +4,13 @@ import ReplaceNames from '@/lib/filter/ReplaceNames';
 import FormatDate from '@/lib/filter/FormatDate';
 export default async function NextStopScreen({ nextstop }) {
   const API_INSTANCE = process.env.API_INSTANCE;
+  const BASE_URL = process.env.BASE_URL;
+  const BASE_PROTOCOL = process.env.BASE_PROTOCOL;
   const fetchdata = await fetch(
     `https://${API_INSTANCE}/stops/${nextstop.IBNR}/departures?results=5&taxi?false&duration=12800&national=false&nationalExpress=false`
   );
   const data = await fetchdata.json();
-  const fetchexitside = await fetch('http://127.0.0.1:3000/data/ubahn-muc/exit/Feldmoching.json');
+  const fetchexitside = await fetch(`${BASE_PROTOCOL}://${BASE_URL}/data/ubahn-muc/exit/Feldmoching.json`);
   const exitside = await fetchexitside.json();
   return (
     <>
