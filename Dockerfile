@@ -1,21 +1,33 @@
+# Use the official lightweight Node.js image based on Alpine Linux
 FROM node:alpine
+
+# Install tzdata to set the timezone
 RUN apk add --no-cache tzdata
+
+# Set the timezone
 ENV TZ=Europe/Berlin
-ENV NODE_ENV production
+
+# Set the environment to production
+ENV NODE_ENV=production
+
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy package.json and yarn.lock to the working directory
 COPY package*.json yarn.lock ./
-RUN corepack enable && yarn set version berry
+
+# Enable Corepack and prepare the specific Yarn version
+RUN corepack enable \
+    && corepack prepare yarn@4.3.1 --activate
+
 # Install dependencies
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 # Copy the rest of the application code to the working directory
 COPY . .
 
 # Build the Next.js app
-RUN yarn run next build
+RUN yarn build
 
 # Expose the port that the Next.js app will run on
 EXPOSE 3000
