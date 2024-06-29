@@ -7,7 +7,7 @@ WORKDIR /app
 
 # Copy package.json and yarn.lock to the working directory
 COPY package*.json yarn.lock ./
-
+RUN corepack enable && yarn set version berry
 # Install dependencies
 RUN yarn install
 
