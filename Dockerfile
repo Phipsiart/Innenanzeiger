@@ -14,7 +14,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Copy package.json and yarn.lock to the working directory
-COPY package*.json yarn.lock ./
+COPY package.json ./
 
 # Enable Corepack and prepare the specific Yarn version
 RUN corepack enable \
