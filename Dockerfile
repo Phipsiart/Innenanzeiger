@@ -21,7 +21,7 @@ RUN corepack enable \
     && corepack prepare yarn@4.3.1 --activate
 
 # Install dependencies
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 # Copy the rest of the application code to the working directory
 COPY . .
