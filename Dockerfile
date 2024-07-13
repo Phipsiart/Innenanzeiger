@@ -18,7 +18,7 @@ COPY package.json yarn.lock ./
 
 # Enable Corepack and prepare the specific Yarn version
 # Install dependencies
-RUN yarn install --frozen-lockfile
+RUN yarn install
 # Copy the rest of the application code to the working directory
 COPY . .
 
