@@ -19,6 +19,7 @@ COPY package.json ./
 # Enable Corepack and prepare the specific Yarn version
 # Install dependencies
 RUN yarn install
+RUN yarn add autoprefixer
 
 # Copy the rest of the application code to the working directory
 COPY . .
