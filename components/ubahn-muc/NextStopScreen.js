@@ -30,30 +30,6 @@ export default async function NextStopScreen({ nextstop }) {
         <div className="fixed left-[16rem] top-4 z-[10200] text-[1.8rem] block">
           <span>Nächster Halt</span>
           <p className="text-gray-500 italic">Next Stop</p>
-          {exitside.stops[nextstop.name] === 'right' ? (
-            <>
-              <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
-              <Image
-                className="fixed top-3.5 ml-[14rem]"
-                src="/train-lines/ubahn-muc/exit-right.jpg"
-                width={157}
-                height={93}
-                alt=""
-              />
-            </>
-          ) : null}
-          {exitside.stops[nextstop.name] === 'left' ? (
-            <>
-              <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
-              <Image
-                className="fixed top-2 ml-[14rem]"
-                src="/train-lines/ubahn-muc/exit-left.png"
-                width={200}
-                height={100}
-                alt=""
-              />
-            </>
-          ) : null}
         </div>
         <div className="bg-white fixed z-[9999] top-[7rem] left-0 bottom-0 h-screen right-0">
           <div className="fixed left-6">
