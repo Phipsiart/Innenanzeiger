@@ -14,12 +14,12 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Copy package.json and yarn.lock to the working directory
-COPY package.json ./
+COPY package.json yarn.lock ./
 
 # Enable Corepack and prepare the specific Yarn version
 # Install dependencies
 RUN yarn install
-
+RUN yarn add autoprefixer
 # Copy the rest of the application code to the working directory
 COPY . .
 
