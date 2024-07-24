@@ -2,66 +2,76 @@ import AvailableTypesofConnections from './AvailableTypesofConnections';
 import Image from 'next/image';
 import ReplaceNames from '@/lib/filter/ReplaceNames';
 import FormatDate from '@/lib/filter/FormatDate';
+
 export default async function NextStopScreen({ nextstop }) {
   const API_INSTANCE = process.env.API_INSTANCE;
   const BASE_URL = process.env.BASE_URL;
   const BASE_PROTOCOL = process.env.BASE_PROTOCOL;
-  const fetchdata = await fetch(
-    `https://${API_INSTANCE}/stops/${nextstop.IBNR}/departures?results=5&taxi?false&duration=12800&national=false&nationalExpress=false`
-  );
-  const data = await fetchdata.json();
-  const fetchexitside = await fetch(`${BASE_PROTOCOL}://${BASE_URL}/data/ubahn-muc/exit/Feldmoching.json`);
-  const exitside = await fetchexitside.json();
-  return (
-    <>
-      {/*This line overlaps the line of the arrow */}
-      <div className="z-[10200] top-0 left-[13rem] fixed p-4 h-[7rem] bg-white"></div>
-      <div className="fixed left-[16rem] top-4 z-[10200] text-[1.8rem] block">
-        <span>Nächster Halt</span>
-        <p className="text-gray-500 italic">Next Stop</p>
-        {exitside.stops[nextstop.name] === 'right' ? (
-          <>
-            <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
-            <Image
-              className="fixed top-3.5 ml-[14rem]"
-              src="/train-lines/ubahn-muc/exit-right.png"
-              width={157}
-              height={93}
-              alt=""
-            />
-          </>
-        ) : null}
-        {exitside.stops[nextstop.name] === 'left' ? (
-          <>
-            <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
-            <Image
-              className="fixed top-3.5 ml-[14rem]"
-              src="/train-lines/ubahn-muc/exit-left.png"
-              width={157}
-              height={93}
-              alt=""
-            />
-          </>
-        ) : null}
-      </div>
-      <div className="bg-white fixed z-[9999] top-[7rem] left-0 bottom-0 h-screen right-0">
-        <div className="fixed left-6">
-          <span className="font-bold text-[5rem]">{nextstop.name}</span>
-          <AvailableTypesofConnections products={nextstop.typeofconnections} />
-          <div className="border-t border-gray-300  fixed mt-4 left-5 right-[23rem]"></div>
-          <div className="fixed right-[23rem] mt-4 text-[1.8rem]">
-            <span>Abfahrten in Min.</span>
-            <p className="text-gray-500 italic">Departure in Min.</p>
-          </div>
-          <div className="flex text-[1.8rem] mt-4">
-            <span>Verbindungen</span>
-            <span className="text-gray-500 italic ml-4">Connections</span>
-          </div>
-          <div className="border-t debug border-gray-300  fixed mt-12 left-5 right-[23rem]"></div>
-        </div>
-        <div className="fixed top-[26rem] left-4">
-          {data.departures.map((connection) => (
+  
+  try {
+    const fetchdata = await fetch(
+      `https://${API_INSTANCE}/stops/${nextstop.IBNR}/departures?results=5&taxi?false&duration=12800&national=false&nationalExpress=false`
+    );
+    if (!fetchdata.ok) {
+      throw new Error(`Error fetching data: ${fetchdata.statusText}`);
+    }
+    const data = await fetchdata.json();
+
+    const fetchexitside = await fetch(`${BASE_PROTOCOL}://${BASE_URL}/data/ubahn-muc/exit/Feldmoching.json`);
+    if (!fetchexitside.ok) {
+      throw new Error(`Error fetching exitside data: ${fetchexitside.statusText}`);
+    }
+    const exitside = await fetchexitside.json();
+
+    return (
+      <>
+        {/*This line overlaps the line of the arrow */}
+        <div className="z-[10200] top-0 left-[13rem] fixed p-4 h-[7rem] bg-white"></div>
+        <div className="fixed left-[16rem] top-4 z-[10200] text-[1.8rem] block">
+          <span>Nächster Halt</span>
+          <p className="text-gray-500 italic">Next Stop</p>
+          {exitside.stops[nextstop.name] === 'right' ? (
             <>
+              <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
+              <Image
+                className="fixed top-3.5 ml-[14rem]"
+                src="/train-lines/ubahn-muc/exit-right.jpg"
+                width={157}
+                height={93}
+                alt=""
+              />
+            </>
+          ) : null}
+          {exitside.stops[nextstop.name] === 'left' ? (
+            <>
+              <div className="border-[0.12rem] border-black w-[13rem] top-0 ml-28 fixed rotate-90"></div>
+              <Image
+                className="fixed top-2 ml-[14rem]"
+                src="/train-lines/ubahn-muc/exit-left.png"
+                width={200}
+                height={100}
+                alt=""
+              />
+            </>
+          ) : null}
+        </div>
+        <div className="bg-white fixed z-[9999] top-[7rem] left-0 bottom-0 h-screen right-0">
+          <div className="fixed left-6">
+            <span className="font-bold text-[5rem]">{nextstop.name}</span>
+            <AvailableTypesofConnections products={nextstop.typeofconnections} />
+            <div className="border-t border-gray-300 fixed mt-4 left-5 right-[23rem]"></div>
+            <div className="fixed right-[23rem] mt-4 text-[1.3em]">
+              <p>Abfahrten in Min.</p>
+              <p className="text-gray-500 italic">Departures in min.</p>
+            </div>
+            <div className="flex text-[1.4rem] mt-4">
+              <span>Verbindungen</span>
+              <span className="text-gray-500 italic ml-4">Connections</span>
+            </div>
+            <div className="border-t border-gray-300 fixed mt-8 left-5 right-[23rem]"></div>
+          </div>
+          <div className="fixed top-[22rem] left-4">
+            {data.departures.map((connection) => (
               <div className="flex mt-3" key={connection.tripId}>
                 {connection.line.productName === 'U' ? (
                   <Image
@@ -70,7 +80,7 @@ export default async function NextStopScreen({ nextstop }) {
                     width="64"
                     className="mt-4"
                     alt={`${connection.line.name.trim()} U-Bahn Logo (illustrational)`}
-                  ></Image>
+                  />
                 ) : (
                   <Image
                     className="fixed"
@@ -78,18 +88,18 @@ export default async function NextStopScreen({ nextstop }) {
                     height="55"
                     width="55"
                     alt={`${connection.line.productName} Logo (illustrational)`}
-                  ></Image>
+                  />
                 )}
-                <span className="text-[2rem] ml-[5rem] mt-2">
+                <span className="text-[1.5rem] ml-[5rem] mt-3">
                   {connection.line.productName === 'U'
                     ? null
                     : connection.line.name.replace('STR', '').replace('BusSEV', '').replace('Bus', '')}
                 </span>
-                <span className="fixed left-56 text-[2rem] ml-4 mt-2">{ReplaceNames(connection.destination.name)}</span>
-                <span className="fixed right-[23rem] text-[2rem] ml-4 mt-2">
+                <span className="fixed left-56 text-[1.5rem] ml-4 mt-3 font-semibold">{ReplaceNames(connection.destination.name)}</span>
+                <span className="fixed right-[23rem] text-[1.5rem] ml-4 mt-3">
                   {(() => {
                     const formattedtime = FormatDate(connection.when);
-                    const [hours, minutes] = formattedtime.split(':').map(Number); // Assuming connection.time is in 'HH:MM' format
+                    const [hours, minutes] = formattedtime.split(':').map(Number);
                     const now = new Date();
                     const departureTime = new Date();
                     departureTime.setHours(hours, minutes);
@@ -98,10 +108,13 @@ export default async function NextStopScreen({ nextstop }) {
                   })()}
                 </span>
               </div>
-            </>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } catch (error) {
+    console.error("An error occurred:", error.message);
+    return null;
+  }
 }

@@ -10,6 +10,12 @@
     "Josephsburg": "left",
     "Innsbrucker Ring": "right",
     "Karl-Preis-Platz": "left",
-    "Giesing": "left"
+    "Giesing": "left",
+    "Untersbergstraße":"left",
+    "Silberhornstraße":"left",
+    "Kolumbusplatz":"left",
+    "Frauenhoferstraße":"left",
+    "Sendlinger Tor":"left",
+    "Hauptbahnhof":"left"
   }
 }

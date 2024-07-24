@@ -70,3 +70,7 @@
 .maplibregl-marker {
   transition: transform 5s ease !important;
 }
+.ubahn-muc{
+  max-width: 12rem !important;
+  z-index: 10800;
+}

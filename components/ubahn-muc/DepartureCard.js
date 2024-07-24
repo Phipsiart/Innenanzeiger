@@ -68,7 +68,7 @@ export default function DepartureCard({ nextstop, stopover, closestStopIndex }) 
 
                     <circle cx="12" cy="30" r="5" fill="#4b5563" />
 
-                    <path d="M 4,50 A 8,8 0 0,1 20,50" fill="none" stroke="#4b5563" stroke-width="5" />
+                    <path d="M 4,50 A 8,8 0 0,1 20,50" fill="none" stroke="#4b5563" strokeWidth="5" />
                   </svg>
                   <span className="text-[3.6rem] laststop fixed left-[16.8rem] mt-[0.2rem]">{stop.name}</span>
                   <span className="text-[2.8rem] fixed right-4 mt-[1.1rem]">{stop.arrival}</span>
