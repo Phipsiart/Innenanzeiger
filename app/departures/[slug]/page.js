@@ -9,7 +9,6 @@ export default async function DeparturePage({ params }) {
   console.log(params);
   const tripId = decodeURIComponent(params.slug);
   const data = await TypeOfTransport(tripId);
-  console.log(data);
   return (
     <>
       {data.typeoftransport === 'default' ? <BOBInnenanzeiger tripId={tripId} /> : null}
