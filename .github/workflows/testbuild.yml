@@ -1,4 +1,4 @@
-name: Build Project
+name: Test Build
 
 on:
   push:
@@ -29,13 +29,6 @@ jobs:
       run: yarn install --frozen-lockfile
 
     - name: Build the Next.js project
-      id: build_step
       run: |
-        yarn build
-      continue-on-error: true  
-
-    - name: Show build logs on failure
-      if: steps.build_step.outcome == 'failure'
-      run: |
-        echo "❌ Build failed!"
-        yarn build --verbose
+        echo "🚀 Starting build..."
+        yarn build || (echo "❌ Build failed! Full logs:" && cat .next/output.log && exit 1)
