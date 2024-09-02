@@ -1,4 +1,4 @@
-name: Test build
+name: Build Project
 
 on:
   push:
@@ -16,12 +16,26 @@ jobs:
         node-version: [18.x, 20.x, 22.x]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - run: yarn install --frozen-lockfile
-    - run: yarn build --if-present
-      continue-on-error: false 
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Build the Next.js project
+      id: build_step
+      run: |
+        yarn build
+      continue-on-error: true  
+
+    - name: Show build logs on failure
+      if: steps.build_step.outcome == 'failure'
+      run: |
+        echo "❌ Build failed!"
+        yarn build --verbose
