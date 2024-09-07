@@ -36,18 +36,18 @@ jobs:
     # Docker steps will only run for Node.js 22.x
     - name: Log in to GitHub Container Registry
       if: matrix.node-version == '22.x'
-      run: echo "${{ secrets.LOGIN_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Build Docker image
       if: matrix.node-version == '22.x'
       run: |
         echo "🐳 Building Docker image..."
-        IMAGE_NAME=ghcr.io/${{ github.actor }}/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
+        IMAGE_NAME=ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
         docker build -t $IMAGE_NAME .
-    
+
     - name: Push Docker image to GHCR
       if: matrix.node-version == '22.x'
       run: |
-        IMAGE_NAME=ghcr.io/${{ github.actor }}/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
+        IMAGE_NAME=ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
         echo "📦 Pushing Docker image to GitHub Container Registry..."
         docker push $IMAGE_NAME
