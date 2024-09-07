@@ -47,4 +47,4 @@ jobs:
       if: success()
       run: |
         echo "📦 Pushing Docker image to GitHub Container Registry..."
-        docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
+        docker push ghcr.io/${{ github.repository_owner }}/innenanzeiger-${{node-version}}:latest
