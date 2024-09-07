@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body ::-webkit-scrollbar { width: 0 !important }  
+body { overflow: -moz-scrollbars-none; }
+body { -ms-overflow-style: none; }
 .delay {
   color: rgb(239 68 68);
 }
