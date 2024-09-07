@@ -42,12 +42,12 @@ jobs:
       if: matrix.node-version == '22.x'
       run: |
         echo "🐳 Building Docker image..."
-        IMAGE_NAME=ghcr.io/$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
+        IMAGE_NAME=ghcr.io/${{ github.actor }}/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
         docker build -t $IMAGE_NAME .
-
+    
     - name: Push Docker image to GHCR
       if: matrix.node-version == '22.x'
       run: |
-        IMAGE_NAME=ghcr.io/$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
+        IMAGE_NAME=ghcr.io/${{ github.actor }}/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'):latest
         echo "📦 Pushing Docker image to GitHub Container Registry..."
         docker push $IMAGE_NAME
