@@ -33,23 +33,3 @@ jobs:
         echo "🚀 Starting build..."
         yarn build || (echo "❌ Build failed! Full logs:" && cat .next/output.log && exit 1)
 
-    # Docker steps will only run for Node.js 22.x
-    - name: Log in to GitHub Container Registry
-      if: matrix.node-version == '22.x'
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-    - name: Build Docker image
-      if: matrix.node-version == '22.x'
-      run: |
-        echo "🐳 Building Docker image..."
-        REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2 | tr '[:upper:]' '[:lower:]')
-        IMAGE_NAME=ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/$REPO_NAME:latest
-        docker build -t $IMAGE_NAME .
-
-    - name: Push Docker image to GHCR
-      if: matrix.node-version == '22.x'
-      run: |
-        REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2 | tr '[:upper:]' '[:lower:]')
-        IMAGE_NAME=ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/$REPO_NAME:latest
-        echo "📦 Pushing Docker image to GitHub Container Registry..."
-        docker push $IMAGE_NAME
