@@ -25,7 +25,7 @@ export default function ShowConnectionDetails({ legs }) {
                     <p>{leg.line}</p>
                     <p>{leg.destination}</p>
                   </div>
-                  <Link href={`/map?tripId=${leg.tripId}`} className="hover:text-green-500">
+                  <Link href={`/map/${encodeURIComponent(leg.tripId)}`} className="hover:text-green-500">
                     show on map
                   </Link>
                   <div className="flex justify-end">
