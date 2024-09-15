@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -9,25 +9,26 @@ import { Calendar } from '@/components/ui/calendar';
 import { Input } from '../ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import AutoCompleteSearch from './AutoCompleteSearch';
+
 export function SearchInput() {
-  const router = useRouter();
+  const fromRef = React.useRef(null);
+  const toRef = React.useRef(null);
 
   const [dateTime, setDateTime] = React.useState(() => {
     const date = new Date();
     return date.toISOString();
   });
 
-  const Redirect = () => {
-    const from = document.getElementById('from').value || 'München Hbf';
-    const to = document.getElementById('to').value || 'Berlin Hbf';
-    console.log(from, to, dateTime);
-    router.push(`/connections?from=${from}&to=${to}&departure=${dateTime}`);
+  const getSearchUrl = () => {
+    const from = fromRef.current?.value || 'München Hbf';
+    const to = toRef.current?.value || 'Berlin Hbf';
+    return `/connections?from=${from}&to=${to}&departure=${dateTime}`;
   };
 
   return (
     <div className="flex justify-center mt-12 flex-wrap ">
-      <AutoCompleteSearch placeholder="From" inputid="from" />
-      <AutoCompleteSearch placeholder="To" inputid="to" />
+      <AutoCompleteSearch placeholder="From" inputRef={fromRef} />
+      <AutoCompleteSearch placeholder="To" inputRef={toRef} />
 
       <div className="mt-2">
         <Popover>
@@ -72,9 +73,12 @@ export function SearchInput() {
         </Popover>
       </div>
 
-      <Button onClick={Redirect} className="ml-2 mt-2">
-        Search
-      </Button>
+      {/* Verwende Link für die Navigation */}
+      <Link href={getSearchUrl()} passHref>
+        <Button className="ml-2 mt-2">
+          Search
+        </Button>
+      </Link>
     </div>
   );
 }
