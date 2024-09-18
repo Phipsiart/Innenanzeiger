@@ -35,7 +35,7 @@
     "lucia": "^3.2.0",
     "lucide-react": "^0.364.0",
     "maplibre-gl": "^4.3.2",
-    "next": "^14.2.3",
+    "next": "^14.2.10",
     "next-auth": "^5.0.0-beta.17",
     "next-nprogress-bar": "^2.3.5",
     "nextjs-toploader": "^1.6.12",
