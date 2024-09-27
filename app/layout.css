@@ -1,14 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body ::-webkit-scrollbar { width: 0 !important }  
-body { overflow: -moz-scrollbars-none; }
-body { -ms-overflow-style: none; }
 .delay {
-  color: rgb(239 68 68);
+  color: rgb(239 68 68) !important;
 }
 .ontime {
-  color: rgb(22 163 74);
+  color: rgb(22 163 74) !important;
 }
 @keyframes scroll {
   0%,
@@ -73,7 +70,7 @@ body { -ms-overflow-style: none; }
 .maplibregl-marker {
   transition: transform 5s ease !important;
 }
-.ubahn-muc{
+.ubahn-muc {
   max-width: 12rem !important;
   z-index: 10800;
 }

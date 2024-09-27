@@ -45,7 +45,7 @@ export default function TrainMap({ tripId }) {
         const { latitude, longitude } = currentLocation;
 
         const currentTimestamp = Date.now();
-        
+
         // Check if coordinates have changed
         if (lng !== longitude || lat !== latitude) {
           lastCoordinateChange.current = currentTimestamp; // Update last coordinate change time
@@ -55,7 +55,7 @@ export default function TrainMap({ tripId }) {
 
           // Remove points that are older than the last 15 seconds
           const fifteenSecondsAgo = currentTimestamp - 15000;
-          dataPoints.current = dataPoints.current.filter(point => point.timestamp >= fifteenSecondsAgo);
+          dataPoints.current = dataPoints.current.filter((point) => point.timestamp >= fifteenSecondsAgo);
 
           // Calculate speed only if we have at least two data points exactly 15 seconds apart
           if (dataPoints.current.length >= 2) {
@@ -115,8 +115,7 @@ export default function TrainMap({ tripId }) {
 
       marker.current = new maplibregl.Marker(el).setLngLat([lng, lat]);
 
-      popup.current = new maplibregl.Popup({ closeOnClick: false })
-        .setHTML(`
+      popup.current = new maplibregl.Popup({ closeOnClick: false }).setHTML(`
           <div style="font-family: Arial, sans-serif; font-size: 14px;">
             <h3 style="margin: 0; font-size: 16px;"></h3>
             <p style="margin: 0;">Longitude: ${lng}</p>

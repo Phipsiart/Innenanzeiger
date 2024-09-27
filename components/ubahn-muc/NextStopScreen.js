@@ -7,7 +7,7 @@ export default async function NextStopScreen({ nextstop }) {
   const API_INSTANCE = process.env.API_INSTANCE;
   const BASE_URL = process.env.BASE_URL;
   const BASE_PROTOCOL = process.env.BASE_PROTOCOL;
-  
+
   try {
     const fetchdata = await fetch(
       `https://${API_INSTANCE}/stops/${nextstop.IBNR}/departures?results=5&taxi?false&duration=12800&national=false&nationalExpress=false`
@@ -71,7 +71,9 @@ export default async function NextStopScreen({ nextstop }) {
                     ? null
                     : connection.line.name.replace('STR', '').replace('BusSEV', '').replace('Bus', '')}
                 </span>
-                <span className="fixed left-56 text-[1.5rem] ml-4 mt-3 font-semibold">{ReplaceNames(connection.destination.name)}</span>
+                <span className="fixed left-56 text-[1.5rem] ml-4 mt-3 font-semibold">
+                  {ReplaceNames(connection.destination.name)}
+                </span>
                 <span className="fixed right-[23rem] text-[1.5rem] ml-4 mt-3">
                   {(() => {
                     const formattedtime = FormatDate(connection.when);
@@ -90,7 +92,7 @@ export default async function NextStopScreen({ nextstop }) {
       </>
     );
   } catch (error) {
-    console.error("An error occurred:", error.message);
+    console.error('An error occurred:', error.message);
     return null;
   }
 }

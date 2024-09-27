@@ -47,7 +47,7 @@ export default async function SBahnInnenanzeiger({ tripId }) {
           <div className="fixed top-0 left-0 right-0 bottom-[7rem] mt-[10rem] bg-gray-200 z-[-100]"></div>
         )}
         <NextStationBar linecolor={themeconfig} nextStop={data.nextstop} nextStopStatus={data.closestStopStatus} />
-        {data.renderconnections && <ConnectionsDisplay ibnr={data.nextstop.IBNR} />}
+        {data.renderconnections && <ConnectionsDisplay ibnr={data.nextstop.IBNR} ExcludeTrain={tripId} />}
         <div className="mb-[10rem]"></div>
         {/*if we reached the Final stop, render a goodbye message.*/}
         {data.closestStopIndex === -1 && (

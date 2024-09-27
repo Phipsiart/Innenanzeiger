@@ -1,9 +1,11 @@
-import CountdownDisplay from '@/components/BOB/CountdownDisplay';
-import { Innenanzeiger } from '@/lib/departures/Innenanzeiger';
-import BOBLines from '@/components/BOB/BOBLines';
-import BOBClock from '@/components/BOB/BOBClock';
-import RefreshData from '@/components/core/RefreshData';
+//The ultimate Innenanzeiger for following trains:
+//https://www.bahnbilder.de/bild/deutschland~unternehmen~brb-bayerische-regiobahn/1368416/et-303--et-316-der.html
 
+import { Innenanzeiger } from '@/lib/departures/Innenanzeiger';
+import RefreshData from '@/components/core/RefreshData';
+import BOBTopBar from '@/components/BOB/BOBTopBar'
+import BOBNextStationBar from '@/components/BOB/BOBNextStationBar'
+import CountdownDisplay from '@/components/BOB/CountdownDisplay'
 export default async function BOBInnenanzeiger({ tripId }) {
   console.log('Trip Id BOB Innenanzeiger', tripId);
   const data = await Innenanzeiger(tripId);
@@ -26,81 +28,59 @@ export default async function BOBInnenanzeiger({ tripId }) {
   return (
     <>
       <RefreshData />
-      <div className="fixed top-0 h-12 z-[9999] bg-[#004e94] w-full">
-        <BOBClock />
-        <span className="fixed end-48  text-[2rem]  text-white">{data.currentDate}</span>
-
-        <span className="fixed top-0 start-3 text-white text-[2rem]">{data.Line}</span>
-      </div>
+        <BOBTopBar date={data.currentDate} line={data.Line} />
       {/**Background-wrapper start */}
       <div className="bg-[#d3d3d3] fixed top-[15rem] left-0 right-0 w-full bottom-0 z-[-200]"></div>
       {/**Background-wrapper End */}
-
+      <BOBNextStationBar data={data} closeststopname={closestStopName} closestStop={closestStop} nextStopStatus={nextStopStatus} />
       {/**Departures Board Start */}
       <div className="fixed top-12 bg-white w-full h-[12rem] z-50">
         <CountdownDisplay destination={Destination} nextStop={closestStop} />
       </div>
-      <div className="mt-[15rem]">
-        <div className="flex text-[#2c4958]">
-          <div className="ml-20 mt-1">
-            <p className="text-[1.3rem] text-center ">Plan</p>
-            <p className="mt-1 text-[3.5rem] font-bold ">
-              {data.closestStopIndex === -1
-                ? data.stopovers[data.totalstops - 1].plannedArrival
-                : closestStop.plannedDeparture}
-            </p>
-          </div>
-          {/**Place SVG next stop overlay here */}
-          <BOBLines numLines={data.stopsleft} />
-          <div className="ml-[5.2rem] mt-1">
-            <p className="text-[1.3rem] text-center ">Aktuell</p>
-            <p
-              className={`${closestStop['arrivalDelay'] > 300 ? 'delay' : 'ontime'} mt-1 text-[3.5rem] font-bold text-green-600`}
-            >
-              {data.closestStopIndex === -1 ? data.stopovers[data.totalstops - 1].arrival : closestStop.departure}
-            </p>
-          </div>
-          <div className="ml-[4.4rem] mt-1">
-            <p className="text-[1.3rem] text-left ">
-              {data.closestStopIndex === -1 ? 'Endstation' : nextStopStatus[data.closestStopIndex]}
-            </p>
-            <p className="mt-1 text-[3.5rem] font-bold ">{closestStopName}</p>
-          </div>
-          <div className="fixed right-5 mt-1">
-            <p className="text-[1.3rem] text-left ">Gleis</p>
-            <p className="mt-1 text-[3.5rem] font-bold ">
-              {data.closestStopIndex === -1
-                ? data.stopovers[data.totalstops - 1].arrivalPlatform
-                : closestStop.departurePlatform}
-            </p>
-          </div>
-        </div>
+      <div className="mt-[23rem] fixed">
+
         {/**More departure cards start */}
         <div className="flex mt-8 mb-4 text-[#2c4958]"></div>
         {data.closestStopIndex !== -1 &&
           nextStops.map((stopover, index) => (
-            <div key={index} className="flex text-[#2c4958]">
-              <div className="ml-24 mt-2">
-                <p className="mt-1 text-[2.6rem]">
-                  {index === 0
+            <div key={index} className="flex text-[#2c4958] text-[2.6rem] text-center">
+            <div className="fixed left-[6.4rem]">
+                 <p className='text-center'> {index === 0
                     ? stopover.plannedArrival
                     : stopover && typeof stopover.plannedArrival === 'string'
                       ? stopover.plannedDeparture
-                      : stopover.plannedArrival}
-                </p>
-              </div>
-              <div className="ml-[8rem] mt-3.5">
-                <p className={`${stopover.arrivalDelay > 300 ? 'delay' : 'ontime'} text-[2.6rem]`}>
-                  {index === -1
-                    ? stopover.arrival
-                    : stopover && typeof stopover === 'string'
-                      ? stopover.departure
-                      : stopover.arrival}
-                </p>
-              </div>
-              <div className="ml-[6.2rem] mt-3.5">
-                <p className="text-[2.5rem] ">{stopover.name}</p>
-              </div>
+                      : stopover.plannedArrival}</p>
+                </div>
+                {/*This is the rectangle for the next stops */}
+                <div className='fixed mt-[1.25rem] left-[16.4rem]'>
+                  <svg width={24} height={24}>
+                <rect
+          width={24}
+          height={24}
+          x={0}
+          y={0}
+          stroke="#2c4958" 
+          strokeWidth="2"
+          fill="white"
+        />
+        </svg>
+
+        </div>
+        {index !== nextStops.length - 1 && (
+<div className='fixed left-[14.62rem]'>
+<svg>
+        <line x1={40} y1={44} x2={40} y2={100} stroke="#2c4958" strokeWidth={2} />
+        </svg>
+  </div>
+        )}
+              <p className={`${stopover.arrivalDelay > 300 ? 'delay' : 'ontime'} fixed left-[21.3rem]`}>
+                {index === -1
+                  ? stopover.arrival
+                  : stopover && typeof stopover === 'string'
+                    ? stopover.departure
+                    : stopover.arrival}
+              </p>
+              <p className='ml-[32.4rem]'>{stopover.name}</p>
             </div>
           ))}
         {/**More departure cards End */}
