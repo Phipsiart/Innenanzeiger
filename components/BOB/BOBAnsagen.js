@@ -79,7 +79,7 @@ const BOBAnsagen = ({ conditionString, IBNR, audiourl }) => {
     const interval = setInterval(checkAudioPlay, 5000);
 
     return () => clearInterval(interval);
-  }, [conditionString, IBNR, playedState, playAudio]); // Trigger on changes
+  }, [conditionString, IBNR, playedState]); // Trigger on changes
 
   return (
     <div className='__ansagen' style={{ display: 'none' }}>
