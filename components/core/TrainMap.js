@@ -93,7 +93,7 @@ export default function TrainMap({ tripId }) {
     const fetchIntervalId = setInterval(fetchData, 17000); // Fetch data every 5 seconds
 
     return () => clearInterval(fetchIntervalId);
-  }, [tripId, lng, lat]);
+  }, [tripId, lng, lat, speed]);
 
   useEffect(() => {
     if (!map.current) {
