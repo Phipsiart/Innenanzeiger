@@ -6,10 +6,12 @@ import RefreshData from '@/components/core/RefreshData';
 import BOBTopBar from '@/components/BOB/BOBTopBar'
 import BOBNextStationBar from '@/components/BOB/BOBNextStationBar'
 import CountdownDisplay from '@/components/BOB/CountdownDisplay'
+import BOBAnsagen from '@/components/BOB/BOBAnsagen'
 export default async function BOBInnenanzeiger({ tripId }) {
   console.log('Trip Id BOB Innenanzeiger', tripId);
   const data = await Innenanzeiger(tripId);
   const Line = data.line;
+  const audiourl = process.env.AUDIO_URL
   const Destination = data.Destination;
   const nextStopStatus = data.nextStopStatus;
   const stopovers = data.stopovers;
@@ -28,6 +30,7 @@ export default async function BOBInnenanzeiger({ tripId }) {
   return (
     <>
       <RefreshData />
+      <BOBAnsagen IBNR={data.nextstop.currentstopid} conditionString={nextStopStatus[data.closestStopIndex]} audiourl={audiourl}  />
         <BOBTopBar date={data.currentDate} line={data.Line} />
       {/**Background-wrapper start */}
       <div className="bg-[#d3d3d3] fixed top-[15rem] left-0 right-0 w-full bottom-0 z-[-200]"></div>
