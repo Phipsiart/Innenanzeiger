@@ -2,13 +2,12 @@ name: Production build
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ['master']
   pull_request:
-    branches: [ "master" ]
+    branches: ['master']
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,20 +15,19 @@ jobs:
         node-version: [18.x, 20.x, 22.x]
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-    - name: Install dependencies
-      run: yarn install && yarn add autoprefixer
+      - name: Install dependencies
+        run: yarn install && yarn add autoprefixer
 
-    - name: Build the Next.js project
-      run: |
-        echo "🚀 Starting build..."
-        yarn build || (echo "❌ Build failed! Full logs:" && cat .next/output.log && exit 1)
-
+      - name: Build the Next.js project
+        run: |
+          echo "🚀 Starting build..."
+          yarn build || (echo "❌ Build failed! Full logs:" && cat .next/output.log && exit 1)

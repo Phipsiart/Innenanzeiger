@@ -30,16 +30,20 @@ Please enjoy the app and remember to consult official sources for the most accur
 - Displays the next stop, delays, and the current status of the train at the station.
 - Shows connections for each stop (currently available in the S-Bahn München & U-Bahn München (alpha) simulations).
 - Live tracking to display the train’s location on a map (with current estimated speed in km/h)
+
 ## Supported Railway Systems
 
 - Bayerische Regiobahn
 - S-Bahn München
 - U-Bahn München (alpha): This feature is still in its early stages, but you can already experience a glimpse of the Munich U-Bahn system DFI.
+
 ## Upcoming Features
+
 - Bayerische Regionbahn: show connections for each stop
 - Translating the user interface to English.
 - ICE Innenanzeiger
 - Departure & Arrival Board
+
 ## Getting Started
 
 This project is developed using Next.js and Tailwind CSS. Ready to dive in? We are too!

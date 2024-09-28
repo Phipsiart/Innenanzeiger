@@ -21,40 +21,43 @@ export default async function ConnectionsDisplay({ ibnr, ExcludeTrain }) {
         </div>
         {/*Top bar end*/}
         <div className="fixed top-[14rem] z-[100] left-4">
-        {data.departures.map((connection) => {
+          {data.departures.map((connection) => {
+            // Don't render the current S-Bahn as a connection
+            if (connection.tripId === ExcludeTrain) {
+              return null;
+            }
 
-      // Don't render the current S-Bahn as a connection
-      if (connection.tripId === ExcludeTrain) {
-        return null;
-      }
-
-      return (
-        <>
-          <div className="flex mt-3" key={connection.tripId}>
-            <Image
-              className="fixed"
-              src={`/transportation-types/${connection.line.productName}.svg`}
-              height="55"
-              width="55"
-              alt={`${connection.line.productName} Logo (illustrational)`}
-            ></Image>
-            <span className="text-[2rem] ml-[5rem] mt-2">
-              {connection.line.name.replace('STR', '').replace('BusSEV', '').replace('Bus', '').replace('BRB', '')}
-            </span>
-            <span className="fixed left-56 text-[2rem] ml-4 mt-2">
-              {ReplaceNames(connection.destination.name)}
-            </span>
-            <span className="fixed right-[11.5rem] text-[2rem] ml-4 mt-2">
-              {FormatDate(connection.plannedWhen)}
-            </span>
-            <span className="fixed right-[2rem] text-[2rem] ml-4 mt-2">
-              {'+ ' + connection.delay / 60 + ' min'}
-            </span>
-          </div>
-          <div className="border-white w-[1222rem] border-t mt-1"></div>
-        </>
-      );
-    })}
+            return (
+              <>
+                <div className="flex mt-3" key={connection.tripId}>
+                  <Image
+                    className="fixed"
+                    src={`/transportation-types/${connection.line.productName}.svg`}
+                    height="55"
+                    width="55"
+                    alt={`${connection.line.productName} Logo (illustrational)`}
+                  ></Image>
+                  <span className="text-[2rem] ml-[5rem] mt-2">
+                    {connection.line.name
+                      .replace('STR', '')
+                      .replace('BusSEV', '')
+                      .replace('Bus', '')
+                      .replace('BRB', '')}
+                  </span>
+                  <span className="fixed left-56 text-[2rem] ml-4 mt-2">
+                    {ReplaceNames(connection.destination.name)}
+                  </span>
+                  <span className="fixed right-[11.5rem] text-[2rem] ml-4 mt-2">
+                    {FormatDate(connection.plannedWhen)}
+                  </span>
+                  <span className="fixed right-[2rem] text-[2rem] ml-4 mt-2">
+                    {'+ ' + connection.delay / 60 + ' min'}
+                  </span>
+                </div>
+                <div className="border-white w-[1222rem] border-t mt-1"></div>
+              </>
+            );
+          })}
         </div>
       </div>
     </>
