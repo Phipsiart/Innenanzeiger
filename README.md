@@ -6,7 +6,7 @@ But a picture says more than 1000 words. Here are our currently supported displa
 
 ### S-Bahn München
 
-![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/2af5bdfe-7f1b-4e73-8964-5f08141a89fc)
+![grafik](https://github.com/user-attachments/assets/10290a02-ac53-4fb8-a7fc-6cfdf61b5b94)
 
 ### U-Bahn München
 
@@ -14,7 +14,7 @@ But a picture says more than 1000 words. Here are our currently supported displa
 
 ### Bayerische Regiobahn
 
-![grafik](https://github.com/Phipsiart/Innenanzeiger/assets/98510944/d5d96d7d-7226-4923-a6ab-89061c7b379f)
+![grafik](https://github.com/user-attachments/assets/1907447d-bca8-484d-b83d-f2b100e3e848)
 
 # Important Notice
 
@@ -29,18 +29,17 @@ Please enjoy the app and remember to consult official sources for the most accur
 - Emulation of various displays from German railway companies based on real-time data from the db-rest API.
 - Displays the next stop, delays, and the current status of the train at the station.
 - Shows connections for each stop (currently available in the S-Bahn München & U-Bahn München (alpha) simulations).
-
+- Live tracking to display the train’s location on a map (with current estimated speed in km/h)
 ## Supported Railway Systems
 
 - Bayerische Regiobahn
 - S-Bahn München
 - U-Bahn München (alpha): This feature is still in its early stages, but you can already experience a glimpse of the Munich U-Bahn system DFI.
-
 ## Upcoming Features
-
-- Live tracking to display the train’s location on a map.
+- Bayerische Regionbahn: show connections for each stop
 - Translating the user interface to English.
-
+- ICE Innenanzeiger
+- Departure & Arrival Board
 ## Getting Started
 
 This project is developed using Next.js and Tailwind CSS. Ready to dive in? We are too!
