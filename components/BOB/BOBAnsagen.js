@@ -6,9 +6,7 @@ const BOBAnsagen = ({ conditionString, IBNR, audiourl }) => {
   const englishAudioRef = useRef(null);
   const germanGoodbyeRef = useRef(null);
   const englishGoodbyeRef = useRef(null);
-  const [playedOnce, setPlayedOnce] = useState(false);
-
-  console.log(IBNR, conditionString);
+  const [playedState, setPlayedState] = useState({ condition: '', ibnr: '' });
 
   useEffect(() => {
     if (!IBNR) return;
@@ -24,64 +22,64 @@ const BOBAnsagen = ({ conditionString, IBNR, audiourl }) => {
     }
   }, [IBNR, audiourl]);
 
-  useEffect(() => {
+  const playAudio = async () => {
     const germanAudio = germanAudioRef.current;
     const englishAudio = englishAudioRef.current;
-
-    if (playedOnce) return;
+    const germanGoodbye = germanGoodbyeRef.current;
+    const englishGoodbye = englishGoodbyeRef.current;
 
     if (conditionString === 'In Kürze erreichen wir') {
       if (germanAudio) {
-        germanAudio.play().then(() => {
-          germanAudio.onended = () => {
-            if (englishAudio) {
-              englishAudio.play().catch((error) => {
-                console.error('Englische IBNR-Audiodatei konnte nicht automatisch abgespielt werden:', error);
-              });
-            }
-          };
-        }).catch((error) => {
-          console.error('Deutsche IBNR-Audiodatei konnte nicht automatisch abgespielt werden:', error);
+        await germanAudio.play();
+        await new Promise(resolve => {
+          germanAudio.onended = resolve;
         });
+      }
+      if (englishAudio) {
+        await englishAudio.play();
       }
     } else if (conditionString === undefined) {
       if (germanAudio) {
-        germanAudio.play().then(() => {
-          germanAudio.onended = () => {
-            const germanGoodbye = germanGoodbyeRef.current;
-            if (germanGoodbye) {
-              germanGoodbye.src = `https://${audiourl}/de/goodbye-message.wav`;
-              germanGoodbye.play().then(() => {
-                germanGoodbye.onended = () => {
-                  if (englishAudio) {
-                    englishAudio.play().then(() => {
-                      englishAudio.onended = () => {
-                        const englishGoodbye = englishGoodbyeRef.current;
-                        if (englishGoodbye) {
-                          englishGoodbye.src = `https://${audiourl}/en/goodbye-message.wav`;
-                          englishGoodbye.play().catch((error) => {
-                            console.error('Englische goodbye-message konnte nicht automatisch abgespielt werden:', error);
-                          });
-                        }
-                      };
-                    }).catch((error) => {
-                      console.error('Englische IBNR-Audiodatei konnte nicht automatisch abgespielt werden:', error);
-                    });
-                  }
-                };
-              }).catch((error) => {
-                console.error('Deutsche goodbye-message konnte nicht automatisch abgespielt werden:', error);
-              });
-            }
-          };
-        }).catch((error) => {
-          console.error('Deutsche IBNR-Audiodatei konnte nicht automatisch abgespielt werden:', error);
+        await germanAudio.play();
+        await new Promise(resolve => {
+          germanAudio.onended = resolve;
         });
       }
+      if (germanGoodbye) {
+        germanGoodbye.src = `https://${audiourl}/de/goodbye-message.wav`;
+        await germanGoodbye.play();
+        await new Promise(resolve => {
+          germanGoodbye.onended = resolve;
+        });
+      }
+      if (englishAudio) {
+          englishAudio.play();
+          await new Promise(resolve =>{
+            englishAudio.onended = resolve;
+          })
+      }
+      if (englishGoodbye) {
+        englishGoodbye.src = `https://${audiourl}/en/goodbye-message.wav`;
+        await englishGoodbye.play();
+      }
     }
+  };
 
-    setPlayedOnce(true);
-  }, [conditionString, playedOnce, audiourl]);
+  useEffect(() => {
+    const checkAudioPlay = () => {
+      if (
+        (conditionString !== playedState.condition || IBNR !== playedState.ibnr)
+        && (conditionString === 'In Kürze erreichen wir' || conditionString === undefined)
+      ) {
+        playAudio();
+        setPlayedState({ condition: conditionString, ibnr: IBNR });
+      }
+    };
+
+    const interval = setInterval(checkAudioPlay, 5000);
+
+    return () => clearInterval(interval);
+  }, [conditionString, IBNR, playedState, playAudio]); // Trigger on changes
 
   return (
     <div className='__ansagen' style={{ display: 'none' }}>
