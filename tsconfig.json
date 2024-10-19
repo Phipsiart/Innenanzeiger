@@ -35,8 +35,9 @@
     "404.js",
     "app/dashboard/screen/page.js",
     "app/api/search/route.js",
+    "app/search-station/page.js",
     "components/core/AutoCompleteSearch.js",
     "components/core/AutoCompleteSearch.js"
-  ],
+, "components/Header.tsx", "app/page.js"  ],
   "exclude": ["node_modules"]
 }
