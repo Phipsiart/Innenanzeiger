@@ -25,7 +25,7 @@ export function SearchInput() {
   };
 
   return (
-    <div className="flex justify-center mt-12 flex-wrap ">
+    <div className="flex justify-center flex-wrap ">
       <AutoCompleteSearch placeholder="From" inputid="from" />
       <AutoCompleteSearch placeholder="To" inputid="to" />
 

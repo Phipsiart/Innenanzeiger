@@ -10,11 +10,8 @@ export default async function Connections({ params, searchParams }) {
   return (
     <>
       <Header />
-      <MainHeadline text="Connections" />
-      <p className="text-center pt-3">
-        from {data[0].journeydata.journeystart} to {data[0].journeydata.journeydestination}
-      </p>
-      <div className="flex justify-center mt-12">
+      <MainHeadline text="Connections" subtitle={`from ${data[0].journeydata.journeystart} to ${data[0].journeydata.journeydestination}`}></MainHeadline>
+      <div className="flex justify-center">
         <div className="max-w-[40rem]">
           {data.map((connection) => (
             <div

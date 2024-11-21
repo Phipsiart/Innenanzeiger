@@ -37,9 +37,14 @@ const Header: React.FC<HeaderProps> = ({ activeheadline, disablelinks, showArriv
                     </span>
                 </Link>
                 {disablelinks ? null : (
-                    <Link href={`/search-station`}>
-                        <span className="text-[1rem] ml-4">Departures</span>
+                    <>
+                                      <Link href={`/search`}>
+                                      <span className="text-[1rem] ml-4 text-gray-700 dark:text-gray-300 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-400 rounded-full px-4 py-2 transition-all duration-300 cursor-pointer">Explore Connections</span>
+                                  </Link>              
+                  <Link href='/search-station'>
+                        <span className="text-[1rem] text-gray-700 dark:text-gray-300 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-400 rounded-full px-4 py-2 transition-all duration-300 cursor-pointer">Departures & Arrivals</span>
                     </Link>
+                </>
                 )}
                     {showArrivalDepartureSwitch ? (
                         <div className='fixed right-2'>

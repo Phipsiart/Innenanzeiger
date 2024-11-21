@@ -3,7 +3,7 @@ import MainHeadline from '@/components/core/MainHeadline';
 export default function Terms() {
   return (
     <>
-      <MainHeadline text="Terms of Service" />
+      <MainHeadline text="Terms of Service" subtitle="" />
       <div className="ml-[4rem] mt-16">
         <p>
           Hello and a warm welcome to Innenanzeiger, the website for passenger information system emulations on trains🥳
