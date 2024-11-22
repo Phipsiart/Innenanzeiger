@@ -15,17 +15,25 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # Docker-Login bei der privaten Registry
+      # Docker-Login mit Umgebungsvariablen (non-interaktiv)
       - name: Log in to Docker Registry
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
         run: |
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ${{ secrets.DOCKER_REGISTRY }} -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          echo "$DOCKER_PASSWORD" | docker login "$DOCKER_REGISTRY" -u "$DOCKER_USERNAME" --password-stdin
 
       # Docker-Image bauen
       - name: Build Docker Image
+        env:
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
         run: |
-          docker build -t ${{ secrets.DOCKER_REGISTRY }}/innenanzeiger:latest .
+          docker build -t $DOCKER_REGISTRY/innenanzeiger:latest .
 
       # Docker-Image pushen
       - name: Push Docker Image
+        env:
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
         run: |
-          docker push ${{ secrets.DOCKER_REGISTRY }}/innenanzeiger:latest
+          docker push $DOCKER_REGISTRY/innenanzeiger:latest
