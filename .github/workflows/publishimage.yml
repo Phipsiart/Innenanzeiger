@@ -1,0 +1,31 @@
+name: Build and Push to Private Registry
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Repository auschecken
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Docker-Login bei der privaten Registry
+      - name: Log in to Docker Registry
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ${{ secrets.DOCKER_REGISTRY }} -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      # Docker-Image bauen
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_REGISTRY }}/innenanzeiger:latest .
+
+      # Docker-Image pushen
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.DOCKER_REGISTRY }}/innenanzeiger:latest
