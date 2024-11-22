@@ -18,7 +18,7 @@ export default function HomePage() {
             {/* Left: Image */}
             <div className="flex-1">
               <Image
-                src="/train-display-mockup.jpg" // Replace with actual image path
+                src="/home/brb-display.jpg" // Replace with actual image path
                 alt="Train interior display"
                 width={700}
                 height={400}
