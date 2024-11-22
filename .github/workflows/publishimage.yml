@@ -15,14 +15,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # Docker-Login mit Umgebungsvariablen (non-interaktiv)
+      # Docker-Login in die private Registry
       - name: Log in to Docker Registry
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
         run: |
-          echo "$DOCKER_PASSWORD" | docker login "$DOCKER_REGISTRY" -u "$DOCKER_USERNAME" --password-stdin
+          if [ -z "$DOCKER_USERNAME" ] || [ -z "$DOCKER_PASSWORD" ] || [ -z "$DOCKER_REGISTRY" ]; then
+            echo "Error: One or more Docker login variables are empty!"
+            exit 1
+          fi
+          echo "$DOCKER_PASSWORD" | docker login "$DOCKER_REGISTRY" --username "$DOCKER_USERNAME" --password-stdin
 
       # Docker-Image bauen
       - name: Build Docker Image
