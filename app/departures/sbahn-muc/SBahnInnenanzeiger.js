@@ -23,7 +23,7 @@ export default async function SBahnInnenanzeiger({ tripId }) {
   if (data.Line == 'S4') {
     themeconfig = '#ef1620';
   }
-  if (data.Line == 'S5) {
+  if (data.Line == 'S5') {
     themeconfig = '#00547E';
   }
   if (data.Line == 'S6') {
