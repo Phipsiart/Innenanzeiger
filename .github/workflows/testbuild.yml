@@ -5,7 +5,7 @@ on:
     branches: ['master']
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -33,3 +33,14 @@ jobs:
         run: |
           echo "🚀 Starting build..."
           yarn build || (echo "❌ Build failed! Full logs:" && cat .next/output.log && exit 1)
+
+      # Über SSH deployen, wenn Build erfolgreich war
+      - name: Deploy to server
+        if: success()
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        run: |
+          echo "🚀 Deploying to server..."
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no "$SSH_USERNAME@$SSH_HOST" "bash /home/nonroot/ci/deploy-innenanzeiger.sh"
