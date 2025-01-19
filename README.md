@@ -1,3 +1,7 @@
+## Note: 
+Due to the discontinuation of the underlying data source, this project no longer works and requires a lot of maintenance to make it work again.
+I will unarchive this repository when I find the time to fix it.
+
 # Welcome to the "Innenanzeiger" Project
 
 Greetings! Welcome to "Innenanzeiger," or "The Interior Display" in English. This web application simulates the journey of a train, emulating the passenger information systems found on real trains. Isn’t that fascinating?
